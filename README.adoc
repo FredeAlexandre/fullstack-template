@@ -1,0 +1,3 @@
+= FredeAlexandre Fullstack Template
+
+This is the template I use to bootstrap quickly a monorepo to build all sort of application for the web
