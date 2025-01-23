@@ -131,3 +131,6 @@ dist
 
 # Direnv
 .direnv
+
+# Database
+pgdata

@@ -32,6 +32,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.2.16",
     "dotenv": "^16.4.7",
     "drizzle-zod": "^0.5.1",
     "pg": "^8.13.1",
