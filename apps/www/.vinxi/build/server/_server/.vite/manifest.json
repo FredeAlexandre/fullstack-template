@@ -1,0 +1,42 @@
+{
+  "_auth.mjs": {
+    "file": "auth.mjs",
+    "name": "auth",
+    "imports": [
+      "_http.mjs"
+    ]
+  },
+  "_http.mjs": {
+    "file": "http.mjs",
+    "name": "http"
+  },
+  "app/utils/queries/auth.ts": {
+    "file": "c_p9grhw.mjs",
+    "name": "c_p9grhw",
+    "src": "app/utils/queries/auth.ts",
+    "isEntry": true,
+    "imports": [
+      "_auth.mjs",
+      "_http.mjs"
+    ]
+  },
+  "app/utils/queries/project.ts": {
+    "file": "c_19i7ppj.mjs",
+    "name": "c_19i7ppj",
+    "src": "app/utils/queries/project.ts",
+    "isEntry": true,
+    "imports": [
+      "_auth.mjs",
+      "_http.mjs"
+    ]
+  },
+  "virtual:$vinxi/handler/server": {
+    "file": "entry.mjs",
+    "name": "entry",
+    "src": "virtual:$vinxi/handler/server",
+    "isEntry": true,
+    "imports": [
+      "_http.mjs"
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "@acme/contracts",
+  "exports": {
+    "./accounts": {
+      "types": "./dist/accounts.d.ts",
+      "default": "./src/accounts.ts"
+    },
+    "./networks": {
+      "types": "./dist/networks.d.ts",
+      "default": "./src/networks.ts"
+    },
+    "./contracts": {
+      "types": "./dist/contracts/index.d.ts",
+      "default": "./src/contracts/index.ts"
+    },
+    "./contracts/deployer": {
+      "types": "./dist/contracts/deployer.d.ts",
+      "default": "./src/contracts/deployer.ts"
+    },
+    "./contracts/super-owner": {
+      "types": "./dist/contracts/super-owner.d.ts",
+      "default": "./src/contracts/super-owner.ts"
+    },
+    "./abi": {
+      "types": "./dist/abi/index.d.ts",
+      "default": "./src/abi/index.ts"
+    },
+    "./abi/deployer": {
+      "types": "./dist/abi/deployer.d.ts",
+      "default": "./src/abi/deployer.ts"
+    },
+    "./abi/super-owner": {
+      "types": "./dist/abi/super-owner.d.ts",
+      "default": "./src/abi/super-owner.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p package.tsconfig.json",
+    "clean": "git clean -xdf .cache artfifacts cache dist node_modules",
+    "compile": "hardhat compile"
+  },
+  "devDependencies": {
+    "@acme/typescript-config": "workspace:*",
+    "@nomicfoundation/hardhat-ignition": "^0.15.9",
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@types/chai": "^5.0.1",
+    "chai": "4.3.7",
+    "hardhat": "^2.22.17"
+  },
+  "dependencies": {
+    "solmate": "^6.8.0"
+  },
+  "peerDependencies": {
+    "viem": "^2.21.57"
+  }
+}

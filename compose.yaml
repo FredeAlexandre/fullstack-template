@@ -1,0 +1,81 @@
+services:
+  www:
+    build:
+      context: .
+      target: www
+      args:
+        - VITE_WWW_URL=$VITE_WWW_URL
+        - VITE_DOCS_URL=$VITE_DOCS_URL
+        - VITE_DEV_URL=$VITE_DEV_URL
+        - VITE_ADMIN_URL=$VITE_ADMIN_URL
+    ports:
+      - 3004:3000
+    environment:
+      - WWW_URL=$WWW_URL
+      - DOCS_URL=$DOCS_URL
+      - DEV_URL=$DEV_URL
+      - ADMIN_URL=$ADMIN_URL
+      - BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET
+      - DATABASE_URL=$DATABASE_URL
+      - SMTP_HOST=$SMTP_HOST
+      - SMTP_USER=$SMTP_USER
+      - SMTP_PASS=$SMTP_PASS
+
+  admin:
+    build:
+      context: .
+      target: admin
+      args:
+        - VITE_WWW_URL=$VITE_WWW_URL
+        - VITE_DOCS_URL=$VITE_DOCS_URL
+        - VITE_DEV_URL=$VITE_DEV_URL
+        - VITE_ADMIN_URL=$VITE_ADMIN_URL
+    ports:
+      - 3003:3000
+    environment:
+      - WWW_URL=$WWW_URL
+      - DOCS_URL=$DOCS_URL
+      - DEV_URL=$DEV_URL
+      - ADMIN_URL=$ADMIN_URL
+      - BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET
+      - DATABASE_URL=$DATABASE_URL
+      - SMTP_HOST=$SMTP_HOST
+      - SMTP_USER=$SMTP_USER
+      - SMTP_PASS=$SMTP_PASS
+
+  doc-dev:
+    build:
+      context: .
+      target: doc-dev
+      args:
+        - VITE_WWW_URL=$VITE_WWW_URL
+        - VITE_DOCS_URL=$VITE_DOCS_URL
+        - VITE_DEV_URL=$VITE_DEV_URL
+        - VITE_ADMIN_URL=$VITE_ADMIN_URL
+    ports:
+      - 3001:3000
+    environment:
+      - WWW_URL=$WWW_URL
+      - DOCS_URL=$DOCS_URL
+      - DEV_URL=$DEV_URL
+      - ADMIN_URL=$ADMIN_URL
+      - BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET
+      - DATABASE_URL=$DATABASE_URL
+
+  doc-user:
+    build:
+      context: .
+      target: doc-user
+      args:
+        - VITE_WWW_URL=$VITE_WWW_URL
+        - VITE_DOCS_URL=$VITE_DOCS_URL
+        - VITE_DEV_URL=$VITE_DEV_URL
+        - VITE_ADMIN_URL=$VITE_ADMIN_URL
+    ports:
+      - 3002:3000
+    environment:
+      - WWW_URL=$WWW_URL
+      - DOCS_URL=$DOCS_URL
+      - DEV_URL=$DEV_URL
+      - ADMIN_URL=$ADMIN_URL
+

@@ -1,0 +1,24 @@
+{
+  "_http.mjs": {
+    "file": "http.mjs",
+    "name": "http"
+  },
+  "app/utils/queries/auth.ts": {
+    "file": "c_78j5o.mjs",
+    "name": "c_78j5o",
+    "src": "app/utils/queries/auth.ts",
+    "isEntry": true,
+    "imports": [
+      "_http.mjs"
+    ]
+  },
+  "virtual:$vinxi/handler/server": {
+    "file": "entry.mjs",
+    "name": "entry",
+    "src": "virtual:$vinxi/handler/server",
+    "isEntry": true,
+    "imports": [
+      "_http.mjs"
+    ]
+  }
+}

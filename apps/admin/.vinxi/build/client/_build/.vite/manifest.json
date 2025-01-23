@@ -1,0 +1,44 @@
+{
+  "/home/alex/Github/smartflow/apps/admin/app/styles/app.css": {
+    "file": "assets/app-C95hcxyN.css",
+    "src": "/home/alex/Github/smartflow/apps/admin/app/styles/app.css"
+  },
+  "_client-S9szjlsc.js": {
+    "file": "assets/client-S9szjlsc.js",
+    "name": "client",
+    "dynamicImports": [
+      "app/routes/first-launch.tsx?tsr-split",
+      "app/routes/index.tsx?tsr-split"
+    ],
+    "assets": [
+      "assets/app-C95hcxyN.css"
+    ]
+  },
+  "app/routes/first-launch.tsx?tsr-split": {
+    "file": "assets/first-launch-BTNi7KV-.js",
+    "name": "first-launch",
+    "src": "app/routes/first-launch.tsx?tsr-split",
+    "isDynamicEntry": true,
+    "imports": [
+      "_client-S9szjlsc.js"
+    ]
+  },
+  "app/routes/index.tsx?tsr-split": {
+    "file": "assets/index-C_Z9ab4V.js",
+    "name": "index",
+    "src": "app/routes/index.tsx?tsr-split",
+    "isDynamicEntry": true,
+    "imports": [
+      "_client-S9szjlsc.js"
+    ]
+  },
+  "virtual:$vinxi/handler/client": {
+    "file": "assets/client-DwHcPOMt.js",
+    "name": "client",
+    "src": "virtual:$vinxi/handler/client",
+    "isEntry": true,
+    "imports": [
+      "_client-S9szjlsc.js"
+    ]
+  }
+}

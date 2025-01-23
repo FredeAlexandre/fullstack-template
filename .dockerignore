@@ -1,0 +1,9 @@
+node_modules
+.vscode
+.direnv
+.git
+.gitignore
+*.nix
+.env
+Dockerfile
+flake.lock
