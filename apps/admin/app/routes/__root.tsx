@@ -13,7 +13,7 @@ import appCss from "~/styles/app.css?url";
 import { seo } from "~/utils/seo";
 
 import { Toaster } from "@acme/ui/sonner";
-import { ThemeProvider } from "@acme/ui/theme";
+import { ThemeProvider } from "~/context/theme-context";
 import type { QueryClient } from "@tanstack/react-query";
 
 import { fetchUser } from "~/utils/queries/auth";
@@ -75,7 +75,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootComponent() {
   return (
     <RootDocument>
-      <ThemeProvider>
+      <ThemeProvider defaultTheme='light' storageKey='vite-ui-theme'>
         <Outlet />
         <Toaster />
       </ThemeProvider>

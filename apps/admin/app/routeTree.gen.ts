@@ -12,7 +12,8 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as FirstLaunchImport } from './routes/first-launch'
-import { Route as IndexImport } from './routes/index'
+import { Route as ProtectedRouteImport } from './routes/_protected/route'
+import { Route as ProtectedIndexImport } from './routes/_protected/index'
 
 // Create/Update Routes
 
@@ -22,21 +23,26 @@ const FirstLaunchRoute = FirstLaunchImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const IndexRoute = IndexImport.update({
+const ProtectedRouteRoute = ProtectedRouteImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProtectedIndexRoute = ProtectedIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => ProtectedRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof ProtectedRouteImport
       parentRoute: typeof rootRoute
     }
     '/first-launch': {
@@ -46,43 +52,64 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FirstLaunchImport
       parentRoute: typeof rootRoute
     }
+    '/_protected/': {
+      id: '/_protected/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof ProtectedIndexImport
+      parentRoute: typeof ProtectedRouteImport
+    }
   }
 }
 
 // Create and export the route tree
 
+interface ProtectedRouteRouteChildren {
+  ProtectedIndexRoute: typeof ProtectedIndexRoute
+}
+
+const ProtectedRouteRouteChildren: ProtectedRouteRouteChildren = {
+  ProtectedIndexRoute: ProtectedIndexRoute,
+}
+
+const ProtectedRouteRouteWithChildren = ProtectedRouteRoute._addFileChildren(
+  ProtectedRouteRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '': typeof ProtectedRouteRouteWithChildren
   '/first-launch': typeof FirstLaunchRoute
+  '/': typeof ProtectedIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/first-launch': typeof FirstLaunchRoute
+  '/': typeof ProtectedIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
+  '/_protected': typeof ProtectedRouteRouteWithChildren
   '/first-launch': typeof FirstLaunchRoute
+  '/_protected/': typeof ProtectedIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/first-launch'
+  fullPaths: '' | '/first-launch' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/first-launch'
-  id: '__root__' | '/' | '/first-launch'
+  to: '/first-launch' | '/'
+  id: '__root__' | '/_protected' | '/first-launch' | '/_protected/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  ProtectedRouteRoute: typeof ProtectedRouteRouteWithChildren
   FirstLaunchRoute: typeof FirstLaunchRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  ProtectedRouteRoute: ProtectedRouteRouteWithChildren,
   FirstLaunchRoute: FirstLaunchRoute,
 }
 
@@ -96,15 +123,22 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
+        "/_protected",
         "/first-launch"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
+    "/_protected": {
+      "filePath": "_protected/route.tsx",
+      "children": [
+        "/_protected/"
+      ]
     },
     "/first-launch": {
       "filePath": "first-launch.tsx"
+    },
+    "/_protected/": {
+      "filePath": "_protected/index.tsx",
+      "parent": "/_protected"
     }
   }
 }
