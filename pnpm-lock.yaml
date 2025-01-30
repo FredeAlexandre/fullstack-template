@@ -378,6 +378,9 @@ importers:
       '@acme/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      '@types/node':
+        specifier: ^22.10.2
+        version: 22.10.2
       '@types/nodemailer':
         specifier: ^6.4.17
         version: 6.4.17
