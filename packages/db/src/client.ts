@@ -7,6 +7,4 @@ if (!process.env.DATABASE_URL) {
   throw new Error("Missing DATABASE_URL is required");
 }
 
-console.log(resolve(import.meta.dirname, "../../../", process.env.DATABASE_URL))
-
 export const db = process.env.NODE_ENV == "development" ? drizzlePgLite(resolve(import.meta.dirname, "../../../", process.env.DATABASE_URL)) : drizzleNodePostgres(process.env.DATABASE_URL);

@@ -5,7 +5,6 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "check": "pnpm with-env tsx ./check.tsx",
     "develop": "email dev",
     "clean": "git clean -xdf .cache dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
