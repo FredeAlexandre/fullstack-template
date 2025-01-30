@@ -1,3 +1,122 @@
-= FredeAlexandre Fullstack Template
+= SaaS Template
 
-This is the template I use to bootstrap quickly a monorepo to build all sort of application for the web
+== Overview
+
+The **SaaS Template** is a production-ready, highly scalable monorepo template designed for building Software as a Service (SaaS) applications with full-stack type safety, optimized developer experience, and modern best practices.
+
+This repository provides a strong foundation for SaaS development, reducing boilerplate setup time while enforcing architectural best practices. It includes a modern tech stack with type safety, optimized database interactions, authentication, email handling, and an admin dashboard.
+
+== Features
+
+- **Monorepo Architecture**: Managed with `pnpm` and `sheriff` for efficient workspace handling.
+- **Full-stack Type Safety**: Uses `Zod` and `TanStack Query` for API validation.
+- **Database Management**: `Drizzle ORM` with PostgreSQL (production) and PGLite (development mode).
+- **Authentication**: Pre-configured authentication with `Better-Auth`.
+- **Email Handling**: Server-side rendering emails with `React-Email` and `Resend API`.
+- **Admin Dashboard**: User management and role-based access control.
+- **Example SaaS App**: Showcases authentication, database interactions, and email validation.
+
+== Getting Started
+
+=== Prerequisites
+
+Ensure the following dependencies are installed:
+
+- Node.js
+- PostgreSQL (for production)
+- `pnpm` (as the package manager)
+
+=== Installation
+
+. Clone the repository:
++
+[source,sh]
+----
+git clone https://github.com/FredeAlexandre/sass-template.git
+cd saas-template
+----
+
+. Install dependencies:
++
+[source,sh]
+----
+pnpm install
+----
+
+. Setup environment variables:
++
+[source,sh]
+----
+cp .env.example .env
+# Configure your database and API keys accordingly
+----
+
+. Push the database schema:
++
+[source,sh]
+----
+pnpm db:push
+----
+
+. Start the development server:
++
+[source,sh]
+----
+pnpm dev
+----
+
+== Project Structure
+
+[source,sh]
+----
+/apps
+  ├─ admin          # Tanstack Start admin dahsboard
+  ├─ www            # Tanstak Start main application
+  ├─ docs           # Next.JS with nextra for user documentation
+/packages
+  ├─ db             # ORM and database schema management
+  ├─ transactional  # Pre-configured authentication setup
+  ├─ ui             # shadcn/ui and other UI components
+/tooling
+  ├─ tailwind       # Shared Tailwing configurations
+  ├─ typescript     # Shared TypeScript configurations
+----
+
+== Development Workflow
+
+=== Running the App
+
+Use the following command to run the full-stack development environment:
+
+[source,sh]
+----
+pnpm dev
+----
+
+=== Database Migrations
+
+Run database migrations using:
+
+[source,sh]
+----
+pnpm db:push
+----
+
+=== Linting & Formatting
+
+Ensure code quality with:
+
+[source,sh]
+----
+pnpm lint    # Lint/Format the code with BiomeJS
+pnpm lint:ws # Check the monorepository good practice for dependencies, files naming, etc
+
+----
+
+== Deployment
+
+TODO: Explain how to deploy with different environement like Docker or Vercel
+
+== Contributors
+
+- Alexandre FREDE
