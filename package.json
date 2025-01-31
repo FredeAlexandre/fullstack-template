@@ -24,7 +24,7 @@
     "dev": "pnpm --parallel dev",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
-    "clean": "git clean -xdf node_modules && pnpm -r clean"
+    "clean": "git clean -xdf node_modules pgdata && pnpm -r clean"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
