@@ -16,9 +16,6 @@ import { Route as AuthedImport } from './routes/_authed'
 import { Route as PublicIndexImport } from './routes/_public/index'
 import { Route as PublicAuthImport } from './routes/_public/_auth'
 import { Route as AuthedAppImport } from './routes/_authed/_app'
-import { Route as PublicShowcaseJsonlidityImport } from './routes/_public/showcase/jsonlidity'
-import { Route as PublicShowcaseDndImport } from './routes/_public/showcase/dnd'
-import { Route as PublicShowcaseDeployerImport } from './routes/_public/showcase/deployer'
 import { Route as PublicAuthSignupImport } from './routes/_public/_auth/signup'
 import { Route as PublicAuthSigninImport } from './routes/_public/_auth/signin'
 import { Route as PublicAuthResetPasswordImport } from './routes/_public/_auth/reset-password'
@@ -57,24 +54,6 @@ const PublicAuthRoute = PublicAuthImport.update({
 const AuthedAppRoute = AuthedAppImport.update({
   id: '/_app',
   getParentRoute: () => AuthedRoute,
-} as any)
-
-const PublicShowcaseJsonlidityRoute = PublicShowcaseJsonlidityImport.update({
-  id: '/showcase/jsonlidity',
-  path: '/showcase/jsonlidity',
-  getParentRoute: () => PublicRoute,
-} as any)
-
-const PublicShowcaseDndRoute = PublicShowcaseDndImport.update({
-  id: '/showcase/dnd',
-  path: '/showcase/dnd',
-  getParentRoute: () => PublicRoute,
-} as any)
-
-const PublicShowcaseDeployerRoute = PublicShowcaseDeployerImport.update({
-  id: '/showcase/deployer',
-  path: '/showcase/deployer',
-  getParentRoute: () => PublicRoute,
 } as any)
 
 const PublicAuthSignupRoute = PublicAuthSignupImport.update({
@@ -220,27 +199,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicAuthSignupImport
       parentRoute: typeof PublicAuthImport
     }
-    '/_public/showcase/deployer': {
-      id: '/_public/showcase/deployer'
-      path: '/showcase/deployer'
-      fullPath: '/showcase/deployer'
-      preLoaderRoute: typeof PublicShowcaseDeployerImport
-      parentRoute: typeof PublicImport
-    }
-    '/_public/showcase/dnd': {
-      id: '/_public/showcase/dnd'
-      path: '/showcase/dnd'
-      fullPath: '/showcase/dnd'
-      preLoaderRoute: typeof PublicShowcaseDndImport
-      parentRoute: typeof PublicImport
-    }
-    '/_public/showcase/jsonlidity': {
-      id: '/_public/showcase/jsonlidity'
-      path: '/showcase/jsonlidity'
-      fullPath: '/showcase/jsonlidity'
-      preLoaderRoute: typeof PublicShowcaseJsonlidityImport
-      parentRoute: typeof PublicImport
-    }
     '/_authed/_app/_dashboard/dashboard': {
       id: '/_authed/_app/_dashboard/dashboard'
       path: '/dashboard'
@@ -353,17 +311,11 @@ const PublicAuthRouteWithChildren = PublicAuthRoute._addFileChildren(
 interface PublicRouteChildren {
   PublicAuthRoute: typeof PublicAuthRouteWithChildren
   PublicIndexRoute: typeof PublicIndexRoute
-  PublicShowcaseDeployerRoute: typeof PublicShowcaseDeployerRoute
-  PublicShowcaseDndRoute: typeof PublicShowcaseDndRoute
-  PublicShowcaseJsonlidityRoute: typeof PublicShowcaseJsonlidityRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
   PublicAuthRoute: PublicAuthRouteWithChildren,
   PublicIndexRoute: PublicIndexRoute,
-  PublicShowcaseDeployerRoute: PublicShowcaseDeployerRoute,
-  PublicShowcaseDndRoute: PublicShowcaseDndRoute,
-  PublicShowcaseJsonlidityRoute: PublicShowcaseJsonlidityRoute,
 }
 
 const PublicRouteWithChildren =
@@ -376,9 +328,6 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof PublicAuthResetPasswordRoute
   '/signin': typeof PublicAuthSigninRoute
   '/signup': typeof PublicAuthSignupRoute
-  '/showcase/deployer': typeof PublicShowcaseDeployerRoute
-  '/showcase/dnd': typeof PublicShowcaseDndRoute
-  '/showcase/jsonlidity': typeof PublicShowcaseJsonlidityRoute
   '/dashboard': typeof AuthedAppDashboardDashboardRoute
   '/logs': typeof AuthedAppDashboardLogsRoute
   '/observability': typeof AuthedAppDashboardObservabilityRoute
@@ -394,9 +343,6 @@ export interface FileRoutesByTo {
   '/reset-password': typeof PublicAuthResetPasswordRoute
   '/signin': typeof PublicAuthSigninRoute
   '/signup': typeof PublicAuthSignupRoute
-  '/showcase/deployer': typeof PublicShowcaseDeployerRoute
-  '/showcase/dnd': typeof PublicShowcaseDndRoute
-  '/showcase/jsonlidity': typeof PublicShowcaseJsonlidityRoute
   '/dashboard': typeof AuthedAppDashboardDashboardRoute
   '/logs': typeof AuthedAppDashboardLogsRoute
   '/observability': typeof AuthedAppDashboardObservabilityRoute
@@ -417,9 +363,6 @@ export interface FileRoutesById {
   '/_public/_auth/reset-password': typeof PublicAuthResetPasswordRoute
   '/_public/_auth/signin': typeof PublicAuthSigninRoute
   '/_public/_auth/signup': typeof PublicAuthSignupRoute
-  '/_public/showcase/deployer': typeof PublicShowcaseDeployerRoute
-  '/_public/showcase/dnd': typeof PublicShowcaseDndRoute
-  '/_public/showcase/jsonlidity': typeof PublicShowcaseJsonlidityRoute
   '/_authed/_app/_dashboard/dashboard': typeof AuthedAppDashboardDashboardRoute
   '/_authed/_app/_dashboard/logs': typeof AuthedAppDashboardLogsRoute
   '/_authed/_app/_dashboard/observability': typeof AuthedAppDashboardObservabilityRoute
@@ -437,9 +380,6 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/signin'
     | '/signup'
-    | '/showcase/deployer'
-    | '/showcase/dnd'
-    | '/showcase/jsonlidity'
     | '/dashboard'
     | '/logs'
     | '/observability'
@@ -454,9 +394,6 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/signin'
     | '/signup'
-    | '/showcase/deployer'
-    | '/showcase/dnd'
-    | '/showcase/jsonlidity'
     | '/dashboard'
     | '/logs'
     | '/observability'
@@ -475,9 +412,6 @@ export interface FileRouteTypes {
     | '/_public/_auth/reset-password'
     | '/_public/_auth/signin'
     | '/_public/_auth/signup'
-    | '/_public/showcase/deployer'
-    | '/_public/showcase/dnd'
-    | '/_public/showcase/jsonlidity'
     | '/_authed/_app/_dashboard/dashboard'
     | '/_authed/_app/_dashboard/logs'
     | '/_authed/_app/_dashboard/observability'
@@ -521,10 +455,7 @@ export const routeTree = rootRoute
       "filePath": "_public.tsx",
       "children": [
         "/_public/_auth",
-        "/_public/",
-        "/_public/showcase/deployer",
-        "/_public/showcase/dnd",
-        "/_public/showcase/jsonlidity"
+        "/_public/"
       ]
     },
     "/_authed/_app": {
@@ -575,18 +506,6 @@ export const routeTree = rootRoute
     "/_public/_auth/signup": {
       "filePath": "_public/_auth/signup.tsx",
       "parent": "/_public/_auth"
-    },
-    "/_public/showcase/deployer": {
-      "filePath": "_public/showcase/deployer.tsx",
-      "parent": "/_public"
-    },
-    "/_public/showcase/dnd": {
-      "filePath": "_public/showcase/dnd.tsx",
-      "parent": "/_public"
-    },
-    "/_public/showcase/jsonlidity": {
-      "filePath": "_public/showcase/jsonlidity.tsx",
-      "parent": "/_public"
     },
     "/_authed/_app/_dashboard/dashboard": {
       "filePath": "_authed/_app/_dashboard/dashboard.tsx",
