@@ -33,7 +33,6 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@acme/tailwind-config": "workspace:*",
     "@acme/typescript-config": "workspace:*",
     "@tanstack/router-devtools": "^1.91.2",
     "@types/react": "catalog:react19",
