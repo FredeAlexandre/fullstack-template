@@ -5,6 +5,6 @@
     "jsx": "react-jsx",
     "rootDir": "."
   },
-  "include": ["emails"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

@@ -2,6 +2,12 @@
   "name": "@acme/transactional",
   "version": "0.1.6",
   "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",

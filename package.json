@@ -24,14 +24,16 @@
     "dev": "pnpm --parallel dev",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
-    "clean": "git clean -xdf node_modules pgdata && pnpm -r clean"
+    "clean": "git clean -xdf node_modules pgdata && pnpm -r clean",
+    "knip": "dotenv -- knip"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
-    "sherif": "^1.1.1",
     "dotenv-cli": "^8.0.0",
+    "sherif": "^1.1.1",
     "typescript": "catalog:",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "knip": "^5.41.1"
   }
 }
