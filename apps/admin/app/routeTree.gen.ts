@@ -18,6 +18,8 @@ import { Route as AuthenticatedIndexImport } from './routes/_authenticated/index
 import { Route as authSignInImport } from './routes/(auth)/sign-in'
 import { Route as authOtpImport } from './routes/(auth)/otp'
 import { Route as auth500Import } from './routes/(auth)/500'
+import { Route as authSetupRouteImport } from './routes/(auth)/setup/route'
+import { Route as authSetupWelcomeImport } from './routes/(auth)/setup/welcome'
 
 // Create Virtual Routes
 
@@ -171,6 +173,12 @@ const auth500Route = auth500Import.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const authSetupRouteRoute = authSetupRouteImport.update({
+  id: '/(auth)/setup',
+  path: '/setup',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const AuthenticatedUsersIndexLazyRoute =
   AuthenticatedUsersIndexLazyImport.update({
     id: '/users/',
@@ -272,6 +280,12 @@ const AuthenticatedSettingsAccountLazyRoute =
     ),
   )
 
+const authSetupWelcomeRoute = authSetupWelcomeImport.update({
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => authSetupRouteRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -281,6 +295,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: ''
       preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/setup': {
+      id: '/(auth)/setup'
+      path: '/setup'
+      fullPath: '/setup'
+      preLoaderRoute: typeof authSetupRouteImport
       parentRoute: typeof rootRoute
     }
     '/(auth)/500': {
@@ -373,6 +394,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedIndexImport
       parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/(auth)/setup/welcome': {
+      id: '/(auth)/setup/welcome'
+      path: '/welcome'
+      fullPath: '/setup/welcome'
+      preLoaderRoute: typeof authSetupWelcomeImport
+      parentRoute: typeof authSetupRouteImport
     }
     '/_authenticated/settings/account': {
       id: '/_authenticated/settings/account'
@@ -499,8 +527,21 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface authSetupRouteRouteChildren {
+  authSetupWelcomeRoute: typeof authSetupWelcomeRoute
+}
+
+const authSetupRouteRouteChildren: authSetupRouteRouteChildren = {
+  authSetupWelcomeRoute: authSetupWelcomeRoute,
+}
+
+const authSetupRouteRouteWithChildren = authSetupRouteRoute._addFileChildren(
+  authSetupRouteRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
   '': typeof AuthenticatedRouteRouteWithChildren
+  '/setup': typeof authSetupRouteRouteWithChildren
   '/500': typeof errors500LazyRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
@@ -513,6 +554,7 @@ export interface FileRoutesByFullPath {
   '/404': typeof errors404LazyRoute
   '/503': typeof errors503LazyRoute
   '/': typeof AuthenticatedIndexRoute
+  '/setup/welcome': typeof authSetupWelcomeRoute
   '/settings/account': typeof AuthenticatedSettingsAccountLazyRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceLazyRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayLazyRoute
@@ -526,6 +568,7 @@ export interface FileRoutesByFullPath {
 }
 
 export interface FileRoutesByTo {
+  '/setup': typeof authSetupRouteRouteWithChildren
   '/500': typeof errors500LazyRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
@@ -537,6 +580,7 @@ export interface FileRoutesByTo {
   '/404': typeof errors404LazyRoute
   '/503': typeof errors503LazyRoute
   '/': typeof AuthenticatedIndexRoute
+  '/setup/welcome': typeof authSetupWelcomeRoute
   '/settings/account': typeof AuthenticatedSettingsAccountLazyRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceLazyRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayLazyRoute
@@ -552,6 +596,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/(auth)/setup': typeof authSetupRouteRouteWithChildren
   '/(auth)/500': typeof auth500Route
   '/(auth)/otp': typeof authOtpRoute
   '/(auth)/sign-in': typeof authSignInRoute
@@ -565,6 +610,7 @@ export interface FileRoutesById {
   '/(errors)/500': typeof errors500LazyRoute
   '/(errors)/503': typeof errors503LazyRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/(auth)/setup/welcome': typeof authSetupWelcomeRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountLazyRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceLazyRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayLazyRoute
@@ -581,6 +627,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | ''
+    | '/setup'
     | '/500'
     | '/otp'
     | '/sign-in'
@@ -593,6 +640,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/503'
     | '/'
+    | '/setup/welcome'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
@@ -605,6 +653,7 @@ export interface FileRouteTypes {
     | '/users'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/setup'
     | '/500'
     | '/otp'
     | '/sign-in'
@@ -616,6 +665,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/503'
     | '/'
+    | '/setup/welcome'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
@@ -629,6 +679,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_authenticated'
+    | '/(auth)/setup'
     | '/(auth)/500'
     | '/(auth)/otp'
     | '/(auth)/sign-in'
@@ -642,6 +693,7 @@ export interface FileRouteTypes {
     | '/(errors)/500'
     | '/(errors)/503'
     | '/_authenticated/'
+    | '/(auth)/setup/welcome'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
@@ -657,6 +709,7 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  authSetupRouteRoute: typeof authSetupRouteRouteWithChildren
   auth500Route: typeof auth500Route
   authOtpRoute: typeof authOtpRoute
   authSignInRoute: typeof authSignInRoute
@@ -672,6 +725,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  authSetupRouteRoute: authSetupRouteRouteWithChildren,
   auth500Route: auth500Route,
   authOtpRoute: authOtpRoute,
   authSignInRoute: authSignInRoute,
@@ -696,6 +750,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/_authenticated",
+        "/(auth)/setup",
         "/(auth)/500",
         "/(auth)/otp",
         "/(auth)/sign-in",
@@ -719,6 +774,12 @@ export const routeTree = rootRoute
         "/_authenticated/help-center/",
         "/_authenticated/tasks/",
         "/_authenticated/users/"
+      ]
+    },
+    "/(auth)/setup": {
+      "filePath": "(auth)/setup/route.tsx",
+      "children": [
+        "/(auth)/setup/welcome"
       ]
     },
     "/(auth)/500": {
@@ -768,6 +829,10 @@ export const routeTree = rootRoute
     "/_authenticated/": {
       "filePath": "_authenticated/index.tsx",
       "parent": "/_authenticated"
+    },
+    "/(auth)/setup/welcome": {
+      "filePath": "(auth)/setup/welcome.tsx",
+      "parent": "/(auth)/setup"
     },
     "/_authenticated/settings/account": {
       "filePath": "_authenticated/settings/account.lazy.tsx",

@@ -2,7 +2,6 @@ import { HTMLAttributes, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, useNavigate } from "@tanstack/react-router";
 import { IconBrandFacebook, IconBrandGithub } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -16,49 +15,61 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/password-input";
+
 import { authClient } from "@/lib/auth-client";
+import { promoteUserAsAdmin } from "@/lib/server-actions/users";
+import { useNavigate } from "@tanstack/react-router";
 
-type UserAuthFormProps = HTMLAttributes<HTMLDivElement>;
+type SignUpFormProps = HTMLAttributes<HTMLDivElement>;
 
-const formSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: "Please enter your email" })
-    .email({ message: "Invalid email address" }),
-  password: z
-    .string()
-    .min(1, {
-      message: "Please enter your password",
-    })
-    .min(7, {
-      message: "Password must be at least 7 characters long",
-    }),
-});
+const formSchema = z
+  .object({
+    name: z.string().min(1, { message: "Please enter a valid name" }),
+    email: z
+      .string()
+      .min(1, { message: "Please enter your email" })
+      .email({ message: "Invalid email address" }),
+    password: z
+      .string()
+      .min(1, {
+        message: "Please enter your password",
+      })
+      .min(7, {
+        message: "Password must be at least 7 characters long",
+      }),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match.",
+    path: ["confirmPassword"],
+  });
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+export function AdminCreationForm({ className, ...props }: SignUpFormProps) {
   const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate({ from: "/sign-in" });
+  const navigate = useNavigate({ from: "/setup/welcome" });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
-  // !TODO Add good error handling
+  // !TODO Handle correctly error cases
   async function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
 
     try {
-      const { data: result } = await authClient.signIn.email({
+      await authClient.signUp.email({
         email: data.email,
         password: data.password,
+        name: data.name,
       });
 
-      console.log(result);
+      await promoteUserAsAdmin({ data: data.email });
 
       navigate({ to: "/" });
     } catch (e) {
@@ -71,6 +82,19 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="grid gap-2">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem className="space-y-1">
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Jhon" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="email"
@@ -89,15 +113,20 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               name="password"
               render={({ field }) => (
                 <FormItem className="space-y-1">
-                  <div className="flex items-center justify-between">
-                    <FormLabel>Password</FormLabel>
-                    <Link
-                      to="/forgot-password"
-                      className="text-sm font-medium text-muted-foreground hover:opacity-75"
-                    >
-                      Forgot password?
-                    </Link>
-                  </div>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <PasswordInput placeholder="********" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem className="space-y-1">
+                  <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
                     <PasswordInput placeholder="********" {...field} />
                   </FormControl>
@@ -106,7 +135,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               )}
             />
             <Button className="mt-2" disabled={isLoading}>
-              Login
+              Create Admin Account
             </Button>
           </div>
         </form>
