@@ -36,8 +36,10 @@ interface NavGroup {
 }
 
 interface SidebarData {
-  user: User
-  teams: Team[]
+  header: {
+    name: string,
+    logo: React.ElementType,
+  }
   navGroups: NavGroup[]
 }
 

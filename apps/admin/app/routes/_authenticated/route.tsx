@@ -7,12 +7,8 @@ import SkipToMain from "@/components/skip-to-main";
 
 export const Route = createFileRoute("/_authenticated")({
   beforeLoad: ({ context, location }) => {
-    if (!context.user) {
-      throw redirect({
-        to: "/sign-in",
-        search: { redirect: encodeURIComponent(location.href) },
-      });
-    }
+    // !TODO: If no admin user exists, redirect to /setup
+    // !TODO: Let access admin users only
   },
   component: RouteComponent,
 });
