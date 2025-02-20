@@ -17,10 +17,9 @@ interface VerifyEmailProps {
   verificationLink?: string;
 }
 
-// @ts-ignore
 const baseUrl = process.env.WWW_URL;
 
-export const VerifyEmail = ({
+const VerifyEmail = ({
   userFirstname,
   verificationLink,
 }: VerifyEmailProps) => {

@@ -2,6 +2,7 @@
   "name": "@acme/transactional",
   "version": "0.1.6",
   "private": true,
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
@@ -12,25 +13,22 @@
     "build": "tsc",
     "dev": "email dev",
     "clean": "git clean -xdf .cache dist node_modules",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
     "@react-email/components": "0.0.31",
-    "nodemailer": "^6.9.16",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.0.0"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@types/node": "^22.10.2",
-    "@types/nodemailer": "^6.4.17",
+    "@types/node": "^22.13.4",
     "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "chalk": "^5.4.0",
-    "dotenv-cli": "^8.0.0",
+    "eslint": "^9.20.1",
     "react-email": "3.0.4",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1"
   }
 }
