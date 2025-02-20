@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "tooling/*"
+    "tooling/*",
+    "packages/*"
   ],
   "scripts": {
     "build": "turbo build typecheck",
