@@ -1,39 +1,5 @@
 {
   "name": "acme",
   "private": true,
-  "engines": {
-    "node": ">=20.16.0"
-  },
-  "packageManager": "pnpm@9.15.4",
-  "scripts": {
-    "docs:dev": "pnpm --filter docs dev",
-    "www:dev": "pnpm --filter www dev",
-    "admin:dev": "pnpm --filter admin dev",
-    "dev:dev": "pnpm --filter dev dev",
-    "db:check": "pnpm --filter @acme/db check",
-    "db:push": "pnpm --filter @acme/db push",
-    "db:push:prod": "dotenv -e .env.production -- pnpm --filter @acme/db push",
-    "db:flush": "pnpm --filter @acme/db flush",
-    "db:reset": "pnpm --filter @acme/db reset",
-    "db:seed": "pnpm --filter @acme/db seed",
-    "db:studio": "pnpm --filter @acme/db studio",
-    "email:check": "pnpm --filter @acme/transactional check",
-    "ui:add": "pnpm --filter @acme/ui ui-add",
-    "lint": "pnpm biome check --write .",
-    "lint:ws": "sherif",
-    "dev": "pnpm --parallel dev",
-    "build": "pnpm -r build",
-    "typecheck": "pnpm -r typecheck",
-    "clean": "git clean -xdf node_modules pgdata && pnpm -r clean",
-    "knip": "dotenv -- knip"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.3",
-    "dotenv-cli": "^8.0.0",
-    "sherif": "^1.1.1",
-    "typescript": "catalog:",
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^2.1.8",
-    "knip": "^5.41.1"
-  }
+  "workspaces": ["apps/*", "packages/*", "tooling/*"]
 }

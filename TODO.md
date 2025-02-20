@@ -1,1 +1,3 @@
-Migrate repository to bun
+- Use knip
+- Use oxlint
+- Use turborepo

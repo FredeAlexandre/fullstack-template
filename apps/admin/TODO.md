@@ -1,1 +1,0 @@
-Create a tanstack start application for administration purpose
