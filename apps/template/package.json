@@ -6,7 +6,8 @@
     "build": "vinxi build",
     "start": "vinxi start",
     "clean": "git clean -xdf .cache .ouput .turbo .vinxi node_modules",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.7",
@@ -24,6 +25,7 @@
     "vinxi": "^0.5.3"
   },
   "devDependencies": {
+    "@acme/eslint-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/bun": "latest",
     "@types/react": "^19.0.10",

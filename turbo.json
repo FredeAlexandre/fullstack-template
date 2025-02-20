@@ -18,8 +18,7 @@
       "persistent": false
     },
     "lint": {
-      "dependsOn": ["^build"],
-      "outputs": [".cache/.eslintcache"]
+      "dependsOn": ["^build"]
     },
     "typecheck": {
       "dependsOn": [
