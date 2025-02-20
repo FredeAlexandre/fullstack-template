@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm with-env vinxi dev",
-    "build": "vpnpm with-env inxi build",
+    "build": "pnpm with-env vinxi build",
     "start": "pnpm with-env vinxi start",
     "with-env": "dotenv -e .env -e ../../.env --"
   },

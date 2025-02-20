@@ -1,16 +1,16 @@
-import { useState, type JSX } from 'react'
-import { useLocation, useNavigate } from '@tanstack/react-router'
-import { Link } from '@tanstack/react-router'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
-import { ScrollArea } from '@/components/ui/scroll-area'
+import { buttonVariants } from '@acme/ui/button'
+import { ScrollArea } from '@acme/ui/scroll-area'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@acme/ui/select'
+import { useLocation, useNavigate } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
+import { type JSX, useState } from 'react'
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
   items: {

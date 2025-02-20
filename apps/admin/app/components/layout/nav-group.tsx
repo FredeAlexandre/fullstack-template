@@ -1,11 +1,17 @@
-import { ReactNode } from 'react'
-import { Link, useLocation } from '@tanstack/react-router'
-import { ChevronRight } from 'lucide-react'
+import { Badge } from '@acme/ui/badge'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible'
+} from '@acme/ui/collapsible'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@acme/ui/dropdown-menu'
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -16,19 +22,13 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-} from '@/components/ui/sidebar'
-import { Badge } from '../ui/badge'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '../ui/dropdown-menu'
-import { NavCollapsible, NavItem, NavLink, type NavGroup } from './types'
+} from '@acme/ui/sidebar'
+import { Link, useLocation } from '@tanstack/react-router'
+import { ChevronRight } from 'lucide-react'
+import type { ReactNode } from 'react'
+import type { NavCollapsible, NavGroup as NavGroupProps, NavItem, NavLink } from './types'
 
-export function NavGroup({ title, items }: NavGroup) {
+export function NavGroup({ title, items }: NavGroupProps) {
   const { state } = useSidebar()
   const href = useLocation({ select: (location) => location.href })
   return (

@@ -1,10 +1,9 @@
 'use client'
 
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { PasswordInput } from '@/components/password-input'
+import { SelectDropdown } from '@/components/select-dropdown'
 import { toast } from '@/hooks/use-toast'
-import { Button } from '@/components/ui/button'
+import { Button } from '@acme/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -12,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@acme/ui/dialog'
 import {
   Form,
   FormControl,
@@ -20,13 +19,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { PasswordInput } from '@/components/password-input'
-import { SelectDropdown } from '@/components/select-dropdown'
+} from '@acme/ui/form'
+import { Input } from '@acme/ui/input'
+import { ScrollArea } from '@acme/ui/scroll-area'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 import { userTypes } from '../data/data'
-import { User } from '../data/schema'
+import type { User } from '../data/schema'
 
 const formSchema = z
   .object({
@@ -100,22 +100,22 @@ export function UsersActionDialog({ currentRow, open, onOpenChange }: Props) {
     resolver: zodResolver(formSchema),
     defaultValues: isEdit
       ? {
-          ...currentRow,
-          password: '',
-          confirmPassword: '',
-          isEdit,
-        }
+        ...currentRow,
+        password: '',
+        confirmPassword: '',
+        isEdit,
+      }
       : {
-          firstName: '',
-          lastName: '',
-          username: '',
-          email: '',
-          role: '',
-          phoneNumber: '',
-          password: '',
-          confirmPassword: '',
-          isEdit,
-        },
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        role: '',
+        phoneNumber: '',
+        password: '',
+        confirmPassword: '',
+        isEdit,
+      },
   })
 
   const onSubmit = (values: UserForm) => {

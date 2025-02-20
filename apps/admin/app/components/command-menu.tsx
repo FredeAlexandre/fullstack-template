@@ -1,11 +1,3 @@
-import React from 'react'
-import { useNavigate } from '@tanstack/react-router'
-import {
-  IconArrowRightDashed,
-  IconDeviceLaptop,
-  IconMoon,
-  IconSun,
-} from '@tabler/icons-react'
 import { useSearch } from '@/context/search-context'
 import { useTheme } from '@/context/theme-context'
 import {
@@ -16,9 +8,17 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@/components/ui/command'
+} from '@acme/ui/command'
+import { ScrollArea } from '@acme/ui/scroll-area'
+import {
+  IconArrowRightDashed,
+  IconDeviceLaptop,
+  IconMoon,
+  IconSun,
+} from '@tabler/icons-react'
+import { useNavigate } from '@tanstack/react-router'
+import React from 'react'
 import { sidebarData } from './layout/data/sidebar-data'
-import { ScrollArea } from './ui/scroll-area'
 
 export function CommandMenu() {
   const navigate = useNavigate()

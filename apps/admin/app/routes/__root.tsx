@@ -1,13 +1,13 @@
-import { ReactNode } from "react";
-import { QueryClient } from "@tanstack/react-query";
-import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
-import appCss from "@/styles/app.css?url";
-import { Meta, Scripts } from "@tanstack/start";
 import { FontProvider } from "@/context/font-context";
 import { ThemeProvider } from "@/context/theme-context";
-import { Toaster } from "@/components/ui/toaster";
 import GeneralError from "@/features/errors/general-error";
 import NotFoundError from "@/features/errors/not-found-error";
+import appCss from "@/styles/app.css?url";
+import { Toaster } from "@acme/ui/sonner";
+import type { QueryClient } from "@tanstack/react-query";
+import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
+import { Meta, Scripts } from "@tanstack/start";
+import type { ReactNode } from "react";
 
 import { fetchUser } from "@/lib/server-actions/auth";
 
@@ -72,7 +72,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <Meta />
       </head>

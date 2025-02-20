@@ -1,9 +1,6 @@
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from '@/hooks/use-toast'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Button } from '@acme/ui/button'
+import { Checkbox } from '@acme/ui/checkbox'
 import {
   Form,
   FormControl,
@@ -12,7 +9,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
+} from '@acme/ui/form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const items = [
   {
@@ -103,10 +103,10 @@ export function DisplayForm() {
                               return checked
                                 ? field.onChange([...field.value, item.id])
                                 : field.onChange(
-                                    field.value?.filter(
-                                      (value) => value !== item.id
-                                    )
+                                  field.value?.filter(
+                                    (value) => value !== item.id
                                   )
+                                )
                             }}
                           />
                         </FormControl>

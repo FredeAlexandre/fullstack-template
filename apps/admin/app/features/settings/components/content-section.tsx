@@ -1,5 +1,5 @@
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { Separator } from '@/components/ui/separator'
+import { ScrollArea } from '@acme/ui/scroll-area'
+import { Separator } from '@acme/ui/separator'
 
 interface ContentSectionProps {
   title: string

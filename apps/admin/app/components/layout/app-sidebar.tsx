@@ -1,13 +1,13 @@
+import { NavGroup } from '@/components/layout/nav-group'
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
-  SidebarRail,
   SidebarMenu,
+  SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuButton
-} from '@/components/ui/sidebar'
-import { NavGroup } from '@/components/layout/nav-group'
+  SidebarRail
+} from '@acme/ui/sidebar'
 import { sidebarData } from './data/sidebar-data'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

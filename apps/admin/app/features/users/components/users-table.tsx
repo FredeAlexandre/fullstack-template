@@ -1,10 +1,17 @@
-import { useState } from 'react'
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  RowData,
-  SortingState,
-  VisibilityState,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@acme/ui/table'
+import {
+  type ColumnDef,
+  type ColumnFiltersState,
+  type RowData,
+  type SortingState,
+  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -14,15 +21,8 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
-import { User } from '../data/schema'
+import { useState } from 'react'
+import type { User } from '../data/schema'
 import { DataTablePagination } from './data-table-pagination'
 import { DataTableToolbar } from './data-table-toolbar'
 
@@ -84,9 +84,9 @@ export function UsersTable({ columns, data }: DataTableProps) {
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                     </TableHead>
                   )
                 })}

@@ -1,6 +1,5 @@
-import { Link } from '@tanstack/react-router'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from '@acme/ui/avatar'
+import { Button } from '@acme/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +9,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@acme/ui/dropdown-menu'
+import { Link } from '@tanstack/react-router'
 
 export function ProfileDropdown() {
   return (

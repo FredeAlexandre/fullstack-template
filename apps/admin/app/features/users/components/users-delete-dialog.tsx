@@ -1,13 +1,13 @@
 'use client'
 
-import { useState } from 'react'
-import { IconAlertTriangle } from '@tabler/icons-react'
-import { toast } from '@/hooks/use-toast'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { ConfirmDialog } from '@/components/confirm-dialog'
-import { User } from '../data/schema'
+import { toast } from '@/hooks/use-toast'
+import { Alert, AlertDescription, AlertTitle } from '@acme/ui/alert'
+import { Input } from '@acme/ui/input'
+import { Label } from '@acme/ui/label'
+import { IconAlertTriangle } from '@tabler/icons-react'
+import { useState } from 'react'
+import type { User } from '../data/schema'
 
 interface Props {
   open: boolean

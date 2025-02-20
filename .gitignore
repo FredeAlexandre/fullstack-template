@@ -134,3 +134,7 @@ dist
 
 # Database
 pgdata
+
+#
+.output
+.vinxi

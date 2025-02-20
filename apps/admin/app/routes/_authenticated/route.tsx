@@ -1,9 +1,9 @@
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
-import { cn } from "@/lib/utils";
-import { SearchProvider } from "@/context/search-context";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import SkipToMain from "@/components/skip-to-main";
+import { SearchProvider } from "@/context/search-context";
+import { cn } from "@/lib/utils";
+import { SidebarProvider } from "@acme/ui/sidebar";
+import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated")({
   beforeLoad: ({ context, location }) => {

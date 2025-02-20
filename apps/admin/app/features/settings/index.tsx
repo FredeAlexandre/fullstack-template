@@ -1,4 +1,9 @@
-import { Outlet } from '@tanstack/react-router'
+import { Header } from '@/components/layout/header'
+import { Main } from '@/components/layout/main'
+import { ProfileDropdown } from '@/components/profile-dropdown'
+import { Search } from '@/components/search'
+import { ThemeSwitch } from '@/components/theme-switch'
+import { Separator } from '@acme/ui/separator'
 import {
   IconBrowserCheck,
   IconNotification,
@@ -6,12 +11,7 @@ import {
   IconTool,
   IconUser,
 } from '@tabler/icons-react'
-import { Separator } from '@/components/ui/separator'
-import { Header } from '@/components/layout/header'
-import { Main } from '@/components/layout/main'
-import { ProfileDropdown } from '@/components/profile-dropdown'
-import { Search } from '@/components/search'
-import { ThemeSwitch } from '@/components/theme-switch'
+import { Outlet } from '@tanstack/react-router'
 import SidebarNav from './components/sidebar-nav'
 
 export default function Settings() {
