@@ -17,6 +17,10 @@
       "cache": false,
       "persistent": false
     },
+    "lint": {
+      "dependsOn": ["^build"],
+      "outputs": [".cache/.eslintcache"]
+    },
     "typecheck": {
       "dependsOn": [
         "^build"
