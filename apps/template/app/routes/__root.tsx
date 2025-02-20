@@ -7,6 +7,8 @@ import {
 } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 
+import appCss from "~/styles/app.css?url"
+
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient
 }>()({
@@ -21,6 +23,12 @@ export const Route = createRootRouteWithContext<{
       },
       {
         title: 'TanStack Start Starter',
+      },
+    ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: appCss,
       },
     ],
   }),
