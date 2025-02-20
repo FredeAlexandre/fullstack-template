@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { cn } from '~/lib/utils'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -6,6 +7,6 @@ export const Route = createFileRoute('/')({
 
 function Home() {
   return (
-    <div className='p-10'>Hello World</div>
+    <div className={cn('p-10')}>Hello World</div>
   )
 }

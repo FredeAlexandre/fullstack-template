@@ -1,5 +1,17 @@
 {
   "name": "acme",
   "private": true,
-  "workspaces": ["apps/*", "packages/*", "tooling/*"]
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ],
+  "scripts": {
+    "knip": "knip"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "knip": "^5.44.4",
+    "typescript": "^5.7.3"
+  }
 }
