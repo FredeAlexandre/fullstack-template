@@ -1,0 +1,1 @@
+Create a documentation website with fumadocs
