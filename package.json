@@ -2,7 +2,8 @@
   "name": "acme",
   "private": true,
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "tooling/*"
   ],
   "scripts": {
     "build": "turbo build typecheck",

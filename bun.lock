@@ -30,6 +30,7 @@
         "vinxi": "^0.5.3",
       },
       "devDependencies": {
+        "@acme/tsconfig": "workspace:*",
         "@types/bun": "latest",
         "@types/react": "^19.0.10",
         "@types/react-dom": "^19.0.4",
@@ -39,8 +40,18 @@
         "typescript": "^5.7.3",
       },
     },
+    "tooling/eslint": {
+      "name": "eslint",
+      "version": "0.0.0",
+    },
+    "tooling/typescript": {
+      "name": "@acme/tsconfig",
+      "version": "0.1.0",
+    },
   },
   "packages": {
+    "@acme/tsconfig": ["@acme/tsconfig@workspace:tooling/typescript"],
+
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
 
     "@ampproject/remapping": ["@ampproject/remapping@2.3.0", "", { "dependencies": { "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw=="],
@@ -594,6 +605,8 @@
     "escape-html": ["escape-html@1.0.3", "", {}, "sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow=="],
 
     "escape-string-regexp": ["escape-string-regexp@5.0.0", "", {}, "sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw=="],
+
+    "eslint": ["eslint@workspace:tooling/eslint"],
 
     "estree-walker": ["estree-walker@3.0.3", "", { "dependencies": { "@types/estree": "^1.0.0" } }, "sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g=="],
 

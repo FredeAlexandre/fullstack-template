@@ -8,15 +8,6 @@
     "clean": "git clean -xdf .cache .ouput .turbo .vinxi node_modules",
     "typecheck": "tsc --noEmit"
   },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "vite-tsconfig-paths": "^5.1.4"
-  },
-  "peerDependencies": {
-    "typescript": "^5.7.3"
-  },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.7",
     "@tanstack/react-query": "^5.66.8",
@@ -31,5 +22,15 @@
     "tailwindcss": "^4.0.7",
     "tailwindcss-animate": "^1.0.7",
     "vinxi": "^0.5.3"
+  },
+  "devDependencies": {
+    "@acme/tsconfig": "workspace:*",
+    "@types/bun": "latest",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.3"
   }
 }
