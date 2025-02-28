@@ -1,0 +1,9 @@
+---
+description: Guidelines for using Oxlint for code linting
+globs: **/oxlint.json
+alwaysApply: false
+---
+- Configure Oxlint to run on pre-commit hooks for immediate feedback
+- Use custom rules to enforce project-specific coding standards
+- Integrate Oxlint with your CI/CD pipeline for consistent code quality
+- Utilize the `--fix` option to automatically resolve linting issues where possible

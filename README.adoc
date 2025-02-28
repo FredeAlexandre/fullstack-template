@@ -22,9 +22,8 @@ This repository provides a strong foundation for SaaS development, reducing boil
 
 Ensure the following dependencies are installed:
 
-- Node.js
-- PostgreSQL (for production)
-- `pnpm` (as the package manager)
+- Bun
+- PostgreSQL instance
 
 === Installation
 
@@ -40,7 +39,7 @@ cd saas-template
 +
 [source,sh]
 ----
-pnpm install
+bun install
 ----
 
 . Setup environment variables:
@@ -55,14 +54,14 @@ cp .env.example .env
 +
 [source,sh]
 ----
-pnpm db:push
+bun db:push
 ----
 
 . Start the development server:
 +
 [source,sh]
 ----
-pnpm dev
+bun dev
 ----
 
 == Project Structure
@@ -71,14 +70,15 @@ pnpm dev
 ----
 /apps
   ├─ admin          # Tanstack Start admin dahsboard
-  ├─ www            # Tanstak Start main application
-  ├─ docs           # Next.JS with nextra for user documentation
+  ├─ www            # Tanstack Start main application
+  ├─ template       # Tanstack Start template application
+  ├─ docs           # Fumadocs documentation
 /packages
   ├─ db             # ORM and database schema management
   ├─ transactional  # Pre-configured authentication setup
   ├─ ui             # shadcn/ui and other UI components
 /tooling
-  ├─ tailwind       # Shared Tailwing configurations
+  ├─ eslint         # Shared Eslint configurations
   ├─ typescript     # Shared TypeScript configurations
 ----
 
@@ -90,7 +90,7 @@ Use the following command to run the full-stack development environment:
 
 [source,sh]
 ----
-pnpm dev
+bun dev
 ----
 
 === Database Migrations
@@ -99,7 +99,7 @@ Run database migrations using:
 
 [source,sh]
 ----
-pnpm db:push
+bun db:push
 ----
 
 === Linting & Formatting
@@ -108,15 +108,11 @@ Ensure code quality with:
 
 [source,sh]
 ----
-pnpm lint    # Lint/Format the code with BiomeJS
-pnpm lint:ws # Check the monorepository good practice for dependencies, files naming, etc
+bun lint:fix    # Lint/Format the code with BiomeJS
+bun sherif      # Check the monorepo sanitity
+bun typecheck   # Check packages typescript
+bun knip        # Check unsued ressources in packages
 
 ----
-
-== Deployment
-
-TODO: Explain how to deploy with different environement like Docker or Vercel
-
-== Contributors
 
 - Alexandre FREDE

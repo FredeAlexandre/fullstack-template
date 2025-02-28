@@ -1,0 +1,20 @@
+---
+description: TypeScript coding standards and type safety guidelines
+globs: **/*.{ts,tsx}
+alwaysApply: false
+---
+- Enable `strict` mode in `tsconfig.json` for enhanced type checking
+- Use `readonly` for array and object properties to prevent unintended mutations
+- Leverage `unknown` type for values with uncertain types, and narrow them with type guards
+- Utilize `as const` assertions to infer literal types for better type safety
+
+---
+name: knip-best-practices.mdc
+description: Best practices for using Knip to detect unused code
+globs: **/knip.json
+---
+
+- Run Knip regularly to identify and remove unused code and dependencies
+- Use the `--include` option to specify directories or files to analyze
+- Configure Knip to ignore specific patterns or files that are intentionally unused
+- Integrate Knip reports into your code review process to maintain a clean codebase
