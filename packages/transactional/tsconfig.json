@@ -5,6 +5,6 @@
     "jsx": "react-jsx",
     "rootDir": "."
   },
-  "include": ["src"],
+  "include": ["src", "emails/verify-email.tsx"],
   "exclude": ["node_modules"]
 }

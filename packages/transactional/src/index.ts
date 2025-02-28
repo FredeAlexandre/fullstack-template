@@ -1,1 +1,1 @@
-export { default as VerifyEmail} from "./verify-email"
+export { default as VerifyEmail} from "../emails/verify-email"

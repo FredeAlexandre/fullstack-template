@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "email dev",
+    "dev": "email dev --port 5001",
     "clean": "git clean -xdf .cache dist node_modules",
     "lint": "eslint",
     "lint:fix": "eslint --fix",

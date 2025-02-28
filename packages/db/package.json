@@ -21,7 +21,6 @@
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache dist node_modules",
-    "dev": "tsc --watch",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "push": "bun with-env drizzle-kit push",
