@@ -11,6 +11,8 @@
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
+    "@acme/db": "workspace:*",
+    "@acme/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.0.7",
     "@tanstack/react-query": "^5.66.8",
     "@tanstack/react-router": "^1.108.0",
@@ -20,6 +22,7 @@
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.7",
     "tailwindcss-animate": "^1.0.7",

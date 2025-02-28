@@ -1,3 +1,2 @@
-- Use knip
-- Use oxlint
-- Use turborepo
+- Make eslint great with formatting capacities
+- Make a great github CI/CD to make the code check itself on push and pull requests
