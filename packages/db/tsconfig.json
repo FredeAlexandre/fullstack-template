@@ -1,5 +1,5 @@
 {
   "extends": "@acme/tsconfig/internal-package.json",
-  "include": ["src"],
+  "include": ["src", "seeds"],
   "exclude": ["node_modules"]
 }

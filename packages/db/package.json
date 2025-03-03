@@ -29,6 +29,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.5.1",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.39.3",
     "drizzle-zod": "^0.5.1",
