@@ -13,11 +13,13 @@
     "clean:ws": "turbo run clean",
     "knip": "knip",
     "sherif": "sherif",
+    "lint": "bunx biome check --write .",
     "typecheck": "turbo typecheck",
     "db:push": "turbo -F @acme/db push",
     "with-env": "dotenv -e .env --"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/node": "^22.13.4",
     "dotenv-cli": "^8.0.0",
     "knip": "^5.44.4",
