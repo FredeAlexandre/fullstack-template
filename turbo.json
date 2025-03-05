@@ -1,50 +1,36 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "ui": "tui",
-  "tasks": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**",
-        ".cache/tsbuildinfo.json"
-      ]
-    },
-    "dev": {
-      "dependsOn": [
-        "^dev"
-      ],
-      "cache": false,
-      "persistent": false
-    },
-    "lint": {
-      "dependsOn": ["^build"]
-    },
-    "lint:fix": {
-      "dependsOn": ["^build"]
-    },
-    "typecheck": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".cache/tsbuildinfo.json"
-      ]
-    },
-    "clean": {
-      "cache": false
-    },
-    "//#clean": {
-      "cache": false
-    },
-    "push": {
-      "cache": false,
-      "interactive": true
-    }
-  },
-  "globalEnv": [
-    "WWW_URL",
-    "DATABASE_URL"
-  ]
+	"$schema": "https://turborepo.org/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**", ".cache/tsbuildinfo.json"]
+		},
+		"dev": {
+			"dependsOn": ["^dev"],
+			"cache": false,
+			"persistent": false
+		},
+		"lint": {
+			"dependsOn": ["^build"]
+		},
+		"lint:fix": {
+			"dependsOn": ["^build"]
+		},
+		"typecheck": {
+			"dependsOn": ["^build"],
+			"outputs": [".cache/tsbuildinfo.json"]
+		},
+		"clean": {
+			"cache": false
+		},
+		"//#clean": {
+			"cache": false
+		},
+		"push": {
+			"cache": false,
+			"interactive": true
+		}
+	},
+	"globalEnv": ["WWW_URL", "DATABASE_URL"]
 }

@@ -1,20 +1,13 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "extends": [
-    "//"
-  ],
-  "tasks": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".output/**",
-        ".vinxi/**"
-      ]
-    },
-    "dev": {
-      "persistent": true
-    }
-  }
+	"$schema": "https://turborepo.org/schema.json",
+	"extends": ["//"],
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": [".output/**", ".vinxi/**"]
+		},
+		"dev": {
+			"persistent": true
+		}
+	}
 }

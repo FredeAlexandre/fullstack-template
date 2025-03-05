@@ -1,25 +1,25 @@
 {
-  "extends": "@acme/tsconfig/base.json",
-  "compilerOptions": {
-    // Enable latest features
-    "lib": ["ES2022", "DOM"],
-    "jsx": "react-jsx",
+	"extends": "@acme/tsconfig/base.json",
+	"compilerOptions": {
+		// Enable latest features
+		"lib": ["ES2022", "DOM"],
+		"jsx": "react-jsx",
 
-    // Bundler mode
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+		// Bundler mode
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
 
-    // Best practices
-    "noFallthroughCasesInSwitch": true,
+		// Best practices
+		"noFallthroughCasesInSwitch": true,
 
-    // Some stricter flags (disabled by default)
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
+		// Some stricter flags (disabled by default)
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noPropertyAccessFromIndexSignature": false,
 
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./app/*"]
-    }
-  }
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./app/*"]
+		}
+	}
 }
