@@ -11,12 +11,6 @@
 			"cache": false,
 			"persistent": false
 		},
-		"lint": {
-			"dependsOn": ["^build"]
-		},
-		"lint:fix": {
-			"dependsOn": ["^build"]
-		},
 		"typecheck": {
 			"dependsOn": ["^build"],
 			"outputs": [".cache/tsbuildinfo.json"]
@@ -30,6 +24,15 @@
 		"push": {
 			"cache": false,
 			"interactive": true
+		},
+		"//#lint": {
+			"cache": false
+		},
+		"//#sherif": {
+			"cache": false
+		},
+		"//#knip": {
+			"cache": false
 		}
 	},
 	"globalEnv": ["WWW_URL", "DATABASE_URL"]

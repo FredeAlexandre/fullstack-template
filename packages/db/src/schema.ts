@@ -9,6 +9,8 @@ import {
 	uuid,
 } from "drizzle-orm/pg-core";
 
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+
 // Table des utilisateurs
 export const users = pgTable("users", {
 	id: uuid("id").defaultRandom().primaryKey(),
@@ -20,6 +22,10 @@ export const users = pgTable("users", {
 	bio: text("bio"),
 	role: text("role").default("user"),
 });
+
+export const usersInsertSchema = createInsertSchema(users);
+
+export const usersSelectSchema = createSelectSchema(users);
 
 // Table des posts
 export const posts = pgTable("posts", {
