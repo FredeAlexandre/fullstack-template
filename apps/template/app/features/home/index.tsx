@@ -7,9 +7,11 @@ import { TableProvider, useTable } from "./context";
 
 export default function Home() {
 	return (
-		<TableProvider>
-			<TableConsumer />
-		</TableProvider>
+		<div className="flex h-dvh items-center justify-center">
+			<TableProvider>
+				<TableConsumer />
+			</TableProvider>
+		</div>
 	);
 }
 
