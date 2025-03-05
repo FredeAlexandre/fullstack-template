@@ -63,7 +63,6 @@ const BreadcrumbPage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <span
     ref={ref}
-    // eslint-disable-next-line prefer-tag-over-role
     role="link"
     aria-disabled="true"
     aria-current="page"

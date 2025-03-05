@@ -7,8 +7,7 @@
     "start": "vinxi start",
     "clean": "git clean -xdf .cache .ouput .turbo .vinxi node_modules",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint": "biome check --write"
   },
   "dependencies": {
     "@acme/db": "workspace:*",
@@ -29,13 +28,10 @@
     "vinxi": "^0.5.3"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/bun": "latest",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "eslint": "^9.20.1",
-    "typescript-eslint": "^8.24.1",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "peerDependencies": {

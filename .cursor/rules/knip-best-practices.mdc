@@ -1,9 +1,0 @@
----
-description: Best practices for using Knip to detect unused code
-globs: **/knip.json
-alwaysApply: false
----
-- Run Knip regularly to identify and remove unused code and dependencies
-- Use the `--include` option to specify directories or files to analyze
-- Configure Knip to ignore specific patterns or files that are intentionally unused
-- Integrate Knip reports into your code review process to maintain a clean codebase

@@ -13,8 +13,6 @@
     "clean:ws": "turbo run clean",
     "knip": "knip",
     "sherif": "sherif",
-    "lint": "oxlint && turbo lint",
-    "lint:fix": "oxlint --fix && turbo lint:fix",
     "typecheck": "turbo typecheck",
     "db:push": "turbo -F @acme/db push",
     "with-env": "dotenv -e .env --"
@@ -23,11 +21,9 @@
     "@types/node": "^22.13.4",
     "dotenv-cli": "^8.0.0",
     "knip": "^5.44.4",
-    "oxlint": "^0.15.11",
     "sherif": "^1.3.0",
     "turbo": "^2.4.4",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.1"
+    "typescript": "^5.7.3"
   },
   "packageManager": "bun@1.2.2"
 }

@@ -267,18 +267,16 @@
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "recharts": "^2.14.1",
-    "sonner": "^1.7.1",
+    "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.1",
     "usehooks-ts": "^3.1.0",
     "vaul": "^1.1.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/react": "^19.0.10",
     "react": "^19.0.0",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.1"
+    "typescript": "^5.7.3"
   },
   "peerDependencies": {
     "react": "^19.0.0"

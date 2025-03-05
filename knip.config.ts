@@ -3,11 +3,11 @@ import type { KnipConfig } from "knip"
 export default {
   workspaces: {
     "apps/*": {
-      "entry": ["app/*.ts", "app/*.tsx", "app.config.ts", "eslint.config.js"],
+      "entry": ["app/*.ts", "app/*.tsx", "app.config.ts"],
       ignoreDependencies: ["postcss", "tailwindcss", "tailwindcss-animate"]
     },
-    "packages/*": {
-      "entry": ["eslint.config.js"],
+    "packages/db": {
+      "entry": ["src/*.ts", "seeds/*.ts"],
     }
   }
 } satisfies KnipConfig

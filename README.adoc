@@ -78,7 +78,6 @@ bun dev
   ├─ transactional  # Pre-configured authentication setup
   ├─ ui             # shadcn/ui and other UI components
 /tooling
-  ├─ eslint         # Shared Eslint configurations
   ├─ typescript     # Shared TypeScript configurations
 ----
 

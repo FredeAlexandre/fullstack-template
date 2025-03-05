@@ -1,9 +1,0 @@
----
-description: Best practices for using Turbo in monorepos
-globs: **/turbo.json
-alwaysApply: false
----
-- Use `turbo run` for parallel task execution across workspaces
-- Implement caching with `--cache-dir` to speed up subsequent builds
-- Define clear task dependencies in `turbo.json` to optimize build pipelines
-- Use `--filter` to run tasks on specific workspaces or packages

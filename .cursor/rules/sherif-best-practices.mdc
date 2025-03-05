@@ -1,9 +1,0 @@
----
-description: Best practices for using Sherif to enforce code standards
-globs: 
-alwaysApply: false
----
-- Define clear rules in `sherif.json` to enforce consistent coding practices
-- Use Sherif's `--fix` option to automatically correct violations where possible
-- Integrate Sherif into your CI/CD pipeline to ensure code standards are met
-- Regularly review and update Sherif rules to align with evolving project needs

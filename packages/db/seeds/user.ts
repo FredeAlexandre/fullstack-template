@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { db } from '../src/client';
-import { eq } from 'drizzle-orm';
 import { users, posts, friends } from '../src/schema';
 import { faker } from '@faker-js/faker';
-import { uuid } from 'drizzle-orm/pg-core';
 
 type User = typeof users.$inferSelect;
 
