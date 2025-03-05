@@ -5,16 +5,17 @@
 	"tsx": true,
 	"tailwind": {
 		"config": "",
-		"css": "src/unused.css",
+		"css": "src/styles.css",
 		"baseColor": "zinc",
-		"cssVariables": true
+		"cssVariables": true,
+		"prefix": ""
 	},
-	"iconLibrary": "lucide",
 	"aliases": {
 		"components": "@acme/ui/components",
 		"utils": "@acme/ui/lib/utils",
 		"hooks": "@acme/ui/hooks",
 		"lib": "@acme/ui/lib",
 		"ui": "@acme/ui"
-	}
+	},
+	"iconLibrary": "lucide"
 }

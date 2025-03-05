@@ -9,7 +9,8 @@ import type { ReactNode } from "react";
 
 import { Toaster } from "@acme/ui/sonner";
 
-import appCss from "~/styles/app.css?url";
+// @ts-ignore
+import appCss from "~/styles.css?url";
 
 export const Route = createRootRouteWithContext<{
 	queryClient: QueryClient;
