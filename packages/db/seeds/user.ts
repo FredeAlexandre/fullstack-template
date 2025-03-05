@@ -70,10 +70,10 @@ function getRandomUser(users: User[]) {
 	const user = users[faker.number.int({ min: 0, max: users.length - 1 })];
 
 	if (user === undefined) {
-		throw new Error("user is undefined by some weird magic")
+		throw new Error("user is undefined by some weird magic");
 	}
 
-	return user
+	return user;
 }
 
 function createFakeFriends(users: User[], total_amount_friends: number) {
@@ -84,10 +84,10 @@ function createFakeFriends(users: User[], total_amount_friends: number) {
 			max: total_amount_friends > 5 ? 5 : total_amount_friends,
 		});
 		for (let i = 0; i < amount_friends; i++) {
-			let friend = getRandomUser(users)
+			let friend = getRandomUser(users);
 
 			while (friend.id === user.id) {
-				friend = getRandomUser(users)
+				friend = getRandomUser(users);
 			}
 
 			_friends.push(createFakeFriendFor(user.id, friend.id));
