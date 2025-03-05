@@ -9,7 +9,7 @@
 		"clean:ws": "turbo run clean",
 		"knip": "knip",
 		"sherif": "sherif",
-		"lint": "bunx biome check --write .",
+		"lint": "biome check --write",
 		"typecheck": "turbo typecheck",
 		"db:push": "turbo -F @acme/db push",
 		"with-env": "dotenv -e .env --"

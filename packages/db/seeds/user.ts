@@ -66,6 +66,16 @@ function createFakePosts(users: User[], total_amount_posts: number) {
 	return posts;
 }
 
+function getRandomUser(users: User[]) {
+	const user = users[faker.number.int({ min: 0, max: users.length - 1 })];
+
+	if (user === undefined) {
+		throw new Error("user is undefined by some weird magic")
+	}
+
+	return user
+}
+
 function createFakeFriends(users: User[], total_amount_friends: number) {
 	const _friends = [];
 	for (const user of users) {
@@ -74,13 +84,13 @@ function createFakeFriends(users: User[], total_amount_friends: number) {
 			max: total_amount_friends > 5 ? 5 : total_amount_friends,
 		});
 		for (let i = 0; i < amount_friends; i++) {
-			let friend = users[faker.number.int({ min: 0, max: users.length - 1 })];
+			let friend = getRandomUser(users)
 
-			while (friend!.id === user.id) {
-				friend = users[faker.number.int({ min: 0, max: users.length - 1 })];
+			while (friend.id === user.id) {
+				friend = getRandomUser(users)
 			}
 
-			_friends.push(createFakeFriendFor(user.id, friend!.id));
+			_friends.push(createFakeFriendFor(user.id, friend.id));
 		}
 	}
 
