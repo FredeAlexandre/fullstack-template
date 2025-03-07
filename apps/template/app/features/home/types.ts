@@ -1,9 +1,20 @@
+export type Friend = {
+	username: string;
+	avatar: string | null;
+};
+
 export type Item = {
 	id: string;
-	name: string;
+	username: string;
+	avatar: string | null;
 	email: string;
-	location: string;
+	age: string;
 	flag: string;
-	status: "Active" | "Inactive" | "Pending";
+	status: "active" | "inactive" | "pending";
 	balance: number;
+	createdAt: Date;
+	bio: string;
+	role: "admin" | "user";
+	posts_amount: number;
+	friends: Friend[];
 };

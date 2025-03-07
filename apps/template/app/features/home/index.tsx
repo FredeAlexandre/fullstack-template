@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { Filters } from "./components/filters";
 import { Pagination } from "./components/pagination";
 import { Table } from "./components/table";
@@ -17,17 +15,6 @@ export default function Home() {
 
 function TableConsumer() {
 	const { setData } = useTable();
-
-	useEffect(() => {
-		async function fetchPosts() {
-			const res = await fetch(
-				"https://res.cloudinary.com/dlzlfasou/raw/upload/users-01_fertyx.json",
-			);
-			const data = await res.json();
-			setData(data);
-		}
-		fetchPosts();
-	}, [setData]);
 
 	return (
 		<div className="max-w-[1000px] space-y-4">

@@ -14,10 +14,11 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 // Table des utilisateurs
 export const users = pgTable("users", {
 	id: uuid("id").defaultRandom().primaryKey(),
+	avatar: text("avatar"),
 	username: text("username").notNull().unique(),
 	email: text("email").notNull().unique(),
 	age: integer("age"),
-	isActive: boolean("is_active").default(true),
+	status: text({ enum: ["active", "inactive", "pending"] }).default("active"),
 	createdAt: timestamp("created_at").defaultNow(),
 	bio: text("bio"),
 	role: text("role").default("user"),

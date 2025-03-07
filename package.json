@@ -1,7 +1,11 @@
 {
 	"name": "acme",
 	"private": true,
-	"workspaces": ["apps/*", "tooling/*", "packages/*"],
+	"workspaces": [
+		"apps/*",
+		"tooling/*",
+		"packages/*"
+	],
 	"scripts": {
 		"dev": "bun with-env turbo dev",
 		"build": "turbo build typecheck",

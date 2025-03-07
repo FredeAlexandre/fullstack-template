@@ -19,7 +19,7 @@
 	},
 	"license": "MIT",
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc -p package.tsconfig.json",
 		"clean": "git clean -xdf .cache dist node_modules",
 		"push": "bun with-env drizzle-kit push",
 		"studio": "bun with-env drizzle-kit studio",

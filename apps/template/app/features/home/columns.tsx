@@ -24,7 +24,7 @@ import type { Item } from "./types";
 // Custom filter function for multi-column searching
 const multiColumnFilterFn: FilterFn<Item> = (row, columnId, filterValue) => {
 	const searchableRowContent =
-		`${row.original.name} ${row.original.email}`.toLowerCase();
+		`${row.original.username} ${row.original.email}`.toLowerCase();
 	const searchTerm = (filterValue ?? "").toLowerCase();
 	return searchableRowContent.includes(searchTerm);
 };
@@ -79,48 +79,30 @@ export const columns: ColumnDef<Item>[] = [
 		size: 220,
 	},
 	{
-		header: "Location",
-		accessorKey: "location",
-		cell: ({ row }) => (
-			<div>
-				<span className="text-lg leading-none">{row.original.flag}</span>{" "}
-				{row.getValue("location")}
-			</div>
-		),
-		size: 180,
-	},
-	{
 		header: "Status",
 		accessorKey: "status",
-		cell: ({ row }) => (
-			<Badge
-				className={cn(
-					row.getValue("status") === "Inactive" &&
-						"bg-muted-foreground/60 text-primary-foreground",
-				)}
-			>
-				{row.getValue("status")}
-			</Badge>
-		),
+		cell: ({ row }) => {
+			const value = row.getValue("status");
+
+			if (typeof value !== "string") return <Badge>Unknown</Badge>;
+
+			return (
+				<Badge
+					className={cn(
+						value === "Inactive" &&
+							"bg-muted-foreground/60 text-primary-foreground",
+					)}
+				>
+					{value.charAt(0).toUpperCase() + value.slice(1)}
+				</Badge>
+			);
+		},
 		size: 100,
 		filterFn: statusFilterFn,
 	},
 	{
 		header: "Performance",
 		accessorKey: "performance",
-	},
-	{
-		header: "Balance",
-		accessorKey: "balance",
-		cell: ({ row }) => {
-			const amount = Number.parseFloat(row.getValue("balance"));
-			const formatted = new Intl.NumberFormat("en-US", {
-				style: "currency",
-				currency: "USD",
-			}).format(amount);
-			return formatted;
-		},
-		size: 120,
 	},
 	{
 		id: "actions",
