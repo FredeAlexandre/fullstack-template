@@ -22,7 +22,7 @@
 	"devDependencies": {
 		"@acme/tsconfig": "workspace:*",
 		"@types/node": "^22.13.4",
-		"@types/react": "^19.0.10",
+		"@types/react": "^19.0.12",
 		"react-email": "3.0.4",
 		"typescript": "^5.7.3"
 	}
