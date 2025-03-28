@@ -22,7 +22,7 @@
 		"sherif": "bunx sherif@latest",
 		"knip": "bun with-env knip",
 
-		"postinstall": "turbo run //#lint //#sherif",
+		"postinstall": "bun sherif",
 		"with-env": "dotenv -e .env --"
 	},
 	"devDependencies": {
