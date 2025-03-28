@@ -7,10 +7,11 @@ type User = typeof users.$inferSelect;
 function createFakeUser(): User {
 	return {
 		id: faker.string.uuid(),
+		avatar: faker.image.avatar(),
 		username: faker.internet.username(),
 		email: faker.internet.email(),
 		age: faker.number.int({ min: 18, max: 80 }),
-		isActive: faker.helpers.arrayElement([true, false]),
+		status: faker.helpers.arrayElement(["active"]),
 		createdAt: faker.date.past(),
 		bio: faker.person.bio(),
 		role: faker.helpers.arrayElement(["user", "admin"]),
