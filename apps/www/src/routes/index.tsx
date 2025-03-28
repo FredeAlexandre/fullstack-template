@@ -2,6 +2,8 @@ import * as fs from "node:fs";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 
+import { Button } from "@acme/ui/button";
+
 const filePath = "count.txt";
 
 async function readCount() {
@@ -34,8 +36,8 @@ function Home() {
 
 	return (
 		<div className="flex h-dvh items-center justify-center">
-			<button
-				type="button"
+			<Button
+				className="bg-primary text-primary-foreground"
 				onClick={() => {
 					updateCount({ data: 1 }).then(() => {
 						router.invalidate();
@@ -43,7 +45,7 @@ function Home() {
 				}}
 			>
 				Add 1 to {state}?
-			</button>
+			</Button>
 		</div>
 	);
 }
