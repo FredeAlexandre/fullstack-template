@@ -40,10 +40,12 @@
 			"cache": false
 		},
 		"//#sherif": {
-			"cache": false
+			"cache": false,
+			"dependsOn": ["//#lint"]
 		},
 		"//#knip": {
-			"cache": false
+			"cache": false,
+			"dependsOn": ["//#lint"]
 		}
 	},
 	"globalEnv": ["POSTGRES_URL", "PORT"],

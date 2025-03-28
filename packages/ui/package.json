@@ -214,7 +214,7 @@
 		},
 		"./hooks/use-mobile": {
 			"types": "./dist/src/hooks/use-mobile.d.ts",
-			"default": "./src/hooks/use-mobile.tsx"
+			"default": "./src/hooks/use-mobile.ts"
 		},
 		"./hooks/use-toast": {
 			"types": "./dist/src/hooks/use-toast.d.ts",
@@ -229,7 +229,6 @@
 		"ui-add": "bunx --bun shadcn@canary add"
 	},
 	"dependencies": {
-		"@hookform/resolvers": "^4.1.3",
 		"@radix-ui/react-accordion": "^1.2.3",
 		"@radix-ui/react-alert-dialog": "^1.1.6",
 		"@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -258,6 +257,7 @@
 		"@radix-ui/react-toggle-group": "^1.1.2",
 		"@radix-ui/react-tooltip": "^1.1.8",
 		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
 		"cmdk": "1.0.0",
 		"date-fns": "^4.1.0",
 		"embla-carousel-react": "^8.5.2",
@@ -271,8 +271,7 @@
 		"sonner": "^2.0.1",
 		"tailwind-merge": "^3.0.2",
 		"usehooks-ts": "^3.1.0",
-		"vaul": "^1.1.2",
-		"zod": "^3.24.2"
+		"vaul": "^1.1.2"
 	},
 	"devDependencies": {
 		"@acme/tsconfig": "workspace:*",
