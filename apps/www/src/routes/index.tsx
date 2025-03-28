@@ -33,15 +33,17 @@ function Home() {
 	const state = Route.useLoaderData();
 
 	return (
-		<button
-			type="button"
-			onClick={() => {
-				updateCount({ data: 1 }).then(() => {
-					router.invalidate();
-				});
-			}}
-		>
-			Add 1 to {state}?
-		</button>
+		<div className="flex h-dvh items-center justify-center">
+			<button
+				type="button"
+				onClick={() => {
+					updateCount({ data: 1 }).then(() => {
+						router.invalidate();
+					});
+				}}
+			>
+				Add 1 to {state}?
+			</button>
+		</div>
 	);
 }
