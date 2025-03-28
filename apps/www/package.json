@@ -6,7 +6,9 @@
 		"build": "vinxi build",
 		"start": "vinxi start",
 		"clean": "git clean -xdf .cache .output .vinxi .turbo node_modules",
-		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
+		"typecheck": "tsc --noEmit --emitDeclarationOnly false",
+		"auth:generate": "bun with-env bunx @better-auth/cli generate",
+		"with-env": "dotenv -e ../../.env --"
 	},
 	"private": true,
 	"peerDependencies": {
@@ -14,6 +16,7 @@
 	},
 	"dependencies": {
 		"@acme/ui": "workspace:*",
+		"@acme/db": "workspace:*",
 		"@tailwindcss/postcss": "^4.0.17",
 		"@tailwindcss/vite": "^4.0.17",
 		"@tanstack/react-router": "^1.114.29",
@@ -27,6 +30,7 @@
 		"vinxi": "^0.5.3"
 	},
 	"devDependencies": {
+		"dotenv-cli": "^8.0.0",
 		"@types/react": "^19.0.12",
 		"@types/react-dom": "^19.0.4",
 		"@vitejs/plugin-react": "^4.3.4",
