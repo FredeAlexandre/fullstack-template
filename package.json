@@ -7,17 +7,19 @@
 		"clean": "git clean -xdf node_modules",
 		"clean:ws": "turbo run clean",
 		"typecheck": "turbo run typecheck",
-		"ui-add": "turbo run ui-add",
-
-		"db:push": "turbo -F @acme/db push",
-		"db:studio": "turbo -F @acme/db studio",
-
-		"dev": "turbo watch dev --continue",
-		"dev:next": "turbo watch dev -F @acme/nextjs...",
 
 		"lint": "biome check",
 		"lint:fix": "biome check --write",
 		"lint:ws": "turbo run //#lint //#sherif //#knip",
+
+		"dev": "turbo watch dev --continue",
+
+		"db:push": "turbo -F @acme/db push",
+		"db:studio": "turbo -F @acme/db studio",
+
+		"ui:add": "turbo run ui-add",
+
+		"www:dev": "bun run -F www dev",
 
 		"sherif": "bunx sherif@latest",
 		"knip": "bun with-env knip",

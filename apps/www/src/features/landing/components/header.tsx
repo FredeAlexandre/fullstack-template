@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@acme/ui/button";
 import {
 	NavigationMenu,
@@ -10,11 +8,20 @@ import {
 	NavigationMenuTrigger,
 } from "@acme/ui/navigation-menu";
 import { Menu, MoveRight, X } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 
+import { Link } from "@tanstack/react-router";
+import type { To } from "~/lib/types";
+
+type Item = { title: string; href: string } | { title: string; to: To };
+type Navigation = {
+	title: string;
+	description: string;
+	items: Item[];
+};
+
 function Header() {
-	const navigationItems = [
+	const navigationItems: Navigation[] = [
 		{
 			title: "Product",
 			description: "Managing a small business today is already tough.",
@@ -68,19 +75,19 @@ function Header() {
 				<div className="hidden flex-row items-center justify-start gap-4 lg:flex">
 					<NavigationMenu className="flex items-start justify-start">
 						<NavigationMenuList className="flex flex-row justify-start gap-4">
-							{navigationItems.map((item) => (
-								<NavigationMenuItem key={item.title}>
+							{navigationItems.map((nav) => (
+								<NavigationMenuItem key={nav.title}>
 									<>
 										<NavigationMenuTrigger className="font-medium text-sm">
-											{item.title}
+											{nav.title}
 										</NavigationMenuTrigger>
 										<NavigationMenuContent className="!w-[450px] p-4">
 											<div className="flex grid-cols-2 flex-col gap-4 lg:grid">
 												<div className="flex h-full flex-col justify-between">
 													<div className="flex flex-col">
-														<p className="text-base">{item.title}</p>
+														<p className="text-base">{nav.title}</p>
 														<p className="text-muted-foreground text-sm">
-															{item.description}
+															{nav.description}
 														</p>
 													</div>
 													<Button size="sm" className="mt-10">
@@ -88,16 +95,29 @@ function Header() {
 													</Button>
 												</div>
 												<div className="flex h-full flex-col justify-end text-sm">
-													{item.items?.map((subItem) => (
-														<NavigationMenuLink
-															href={subItem.href}
-															key={subItem.title}
-															className="flex flex-row items-center justify-between rounded px-4 py-2 hover:bg-muted"
-														>
-															<span>{subItem.title}</span>
-															<MoveRight className="h-4 w-4 text-muted-foreground" />
-														</NavigationMenuLink>
-													))}
+													{nav.items.map((item) =>
+														"href" in item ? (
+															<NavigationMenuLink
+																href={item.href}
+																key={item.title}
+																className="flex flex-row items-center justify-between rounded px-4 py-2 hover:bg-muted"
+															>
+																<span>{item.title}</span>
+																<MoveRight className="h-4 w-4 text-muted-foreground" />
+															</NavigationMenuLink>
+														) : (
+															<NavigationMenuLink
+																asChild
+																key={item.title}
+																className="flex flex-row items-center justify-between rounded px-4 py-2 hover:bg-muted"
+															>
+																<Link to={item.to}>
+																	<span>{item.title}</span>
+																	<MoveRight className="h-4 w-4 text-muted-foreground" />
+																</Link>
+															</NavigationMenuLink>
+														),
+													)}
 												</div>
 											</div>
 										</NavigationMenuContent>
@@ -111,8 +131,12 @@ function Header() {
 					<p className="font-semibold">Acme</p>
 				</div>
 				<div className="flex w-full justify-end gap-4">
-					<Button variant="outline">Sign in</Button>
-					<Button>Sign up</Button>
+					<Button variant="outline" asChild>
+						<Link to="/auth/sign-in">Sign in</Link>
+					</Button>
+					<Button asChild>
+						<Link to="/auth/sign-up">Sign up</Link>
+					</Button>
 				</div>
 				<div className="flex w-12 shrink items-end justify-end lg:hidden">
 					<Button variant="ghost" onClick={() => setOpen(!isOpen)}>
@@ -120,21 +144,34 @@ function Header() {
 					</Button>
 					{isOpen && (
 						<div className="container absolute top-20 right-0 flex w-full flex-col gap-8 border-t bg-background py-4 shadow-lg">
-							{navigationItems.map((item) => (
-								<div key={item.title}>
+							{navigationItems.map((nav) => (
+								<div key={nav.title}>
 									<div className="flex flex-col gap-2">
-										{item.items?.map((subItem) => (
-											<Link
-												key={subItem.title}
-												href={subItem.href}
-												className="flex items-center justify-between"
-											>
-												<span className="text-muted-foreground">
-													{subItem.title}
-												</span>
-												<MoveRight className="h-4 w-4 stroke-1" />
-											</Link>
-										))}
+										{nav.items.map((item) =>
+											"href" in item ? (
+												<a
+													key={item.title}
+													href={item.href}
+													className="flex items-center justify-between"
+												>
+													<span className="text-muted-foreground">
+														{item.title}
+													</span>
+													<MoveRight className="h-4 w-4 stroke-1" />
+												</a>
+											) : (
+												<Link
+													key={item.title}
+													to={item.to}
+													className="flex items-center justify-between"
+												>
+													<span className="text-muted-foreground">
+														{item.title}
+													</span>
+													<MoveRight className="h-4 w-4 stroke-1" />
+												</Link>
+											),
+										)}
 									</div>
 								</div>
 							))}
