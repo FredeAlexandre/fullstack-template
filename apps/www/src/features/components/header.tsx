@@ -128,7 +128,9 @@ function Header() {
 					</NavigationMenu>
 				</div>
 				<div className="flex lg:justify-center">
-					<p className="font-semibold">Acme</p>
+					<Link to="/">
+						<p className="font-semibold">Acme</p>
+					</Link>
 				</div>
 				<div className="flex w-full justify-end gap-4">
 					<Button variant="outline" asChild>
