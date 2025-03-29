@@ -3,8 +3,19 @@ import type { KnipConfig } from "knip";
 export default {
 	workspaces: {
 		"apps/*": {
-			entry: ["app/*.ts", "app/*.tsx", "app.config.ts"],
-			ignoreDependencies: ["postcss", "tailwindcss", "tailwindcss-animate"],
+			entry: [
+				"src/*.ts",
+				"src/*.tsx",
+				"src/routes/api/**/*.ts",
+				"app.config.ts",
+			],
+			ignoreDependencies: [
+				"postcss",
+				"tailwindcss",
+				"tailwindcss-animate",
+				"tw-animate-css",
+				"@vitejs/plugin-react",
+			],
 		},
 		"packages/db": {
 			entry: ["src/*.ts", "seeds/*.ts"],
