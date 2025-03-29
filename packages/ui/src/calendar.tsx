@@ -2,8 +2,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import type * as React from "react";
 import { DayPicker } from "react-day-picker";
 
-import { cn } from "@acme/ui";
-import { buttonVariants } from "@acme/ui/button";
+import { cn } from ".";
+import { buttonVariants } from "./button";
 
 function Calendar({
 	className,

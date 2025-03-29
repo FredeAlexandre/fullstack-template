@@ -2,7 +2,7 @@ import { GripVerticalIcon } from "lucide-react";
 import type * as React from "react";
 import * as ResizablePrimitive from "react-resizable-panels";
 
-import { cn } from "@acme/ui";
+import { cn } from ".";
 
 function ResizablePanelGroup({
 	className,

@@ -1,5 +1,5 @@
 import { cn } from "@acme/ui";
-import { Button } from "@acme/ui/button.tsx";
+import { Button } from "@acme/ui/button";
 import { ChevronRight } from "lucide-react";
 import type * as React from "react";
 

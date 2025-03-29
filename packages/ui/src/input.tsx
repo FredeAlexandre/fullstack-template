@@ -1,6 +1,6 @@
 import type * as React from "react";
 
-import { cn } from "@acme/ui";
+import { cn } from ".";
 
 export type InputProps = React.ComponentProps<"input">;
 
