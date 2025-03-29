@@ -4,23 +4,10 @@
 	"version": "0.1.0",
 	"type": "module",
 	"exports": {
-		".": {
-			"types": "./dist/src/index.d.ts",
-			"default": "./src/index.ts"
-		},
 		"./style.css": "./src/style.css",
-		"./*": {
-			"types": "./dist/src/*.d.ts",
-			"default": "./src/*.tsx"
-		},
-		"./hooks/use-mobile": {
-			"types": "./dist/src/hooks/use-mobile.d.ts",
-			"default": "./src/hooks/use-mobile.ts"
-		},
-		"./hooks/use-toast": {
-			"types": "./dist/src/hooks/use-toast.d.ts",
-			"default": "./src/hooks/use-toast.ts"
-		}
+		".": "./src/index.ts",
+		"./*": "./src/*.tsx",
+		"./hooks/*": "./src/hooks/*.ts"
 	},
 	"license": "MIT",
 	"scripts": {
