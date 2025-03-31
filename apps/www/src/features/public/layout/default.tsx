@@ -7,6 +7,7 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@acme/ui/navigation-menu";
+import { useRouteContext } from "@tanstack/react-router";
 import { Menu, MoveRight, X } from "lucide-react";
 import { useState } from "react";
 
@@ -23,6 +24,7 @@ type Navigation = {
 export default function PublicLayout({
 	children,
 }: { children?: React.ReactNode }) {
+	const { user } = useRouteContext({ from: "/_public" });
 	const navigationItems: Navigation[] = [
 		{
 			title: "Products",
@@ -135,14 +137,22 @@ export default function PublicLayout({
 							<p className="font-semibold">Acme</p>
 						</Link>
 					</div>
-					<div className="flex w-full justify-end gap-4">
-						<Button variant="outline" asChild>
-							<Link to="/auth/sign-in">Sign in</Link>
-						</Button>
-						<Button asChild>
-							<Link to="/auth/sign-up">Sign up</Link>
-						</Button>
-					</div>
+					{user ? (
+						<div className="flex w-full justify-end gap-4">
+							<Button asChild>
+								<Link to="/app">Access App</Link>
+							</Button>
+						</div>
+					) : (
+						<div className="flex w-full justify-end gap-4">
+							<Button variant="outline" asChild>
+								<Link to="/auth/sign-in">Sign in</Link>
+							</Button>
+							<Button asChild>
+								<Link to="/auth/sign-up">Sign up</Link>
+							</Button>
+						</div>
+					)}
 					<div className="flex w-12 shrink items-end justify-end lg:hidden">
 						<Button variant="ghost" onClick={() => setOpen(!isOpen)}>
 							{isOpen ? (
