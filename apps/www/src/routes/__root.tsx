@@ -12,6 +12,8 @@ import { NotFound } from "~/components/not-found";
 // @ts-ignore
 import appCss from "~/styles/app.css?url";
 
+import { Toaster } from "@acme/ui/sonner";
+
 import { fetchUser } from "~/functions";
 
 export const Route = createRootRouteWithContext<{
@@ -54,6 +56,7 @@ function RootComponent() {
 	return (
 		<RootDocument>
 			<Outlet />
+			<Toaster />
 		</RootDocument>
 	);
 }
