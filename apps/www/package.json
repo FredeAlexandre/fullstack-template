@@ -2,9 +2,9 @@
 	"name": "www",
 	"type": "module",
 	"scripts": {
-		"dev": "vinxi dev",
+		"dev": "bun with-env vinxi dev",
 		"build": "vinxi build",
-		"start": "vinxi start",
+		"start": "bun with-env vinxi start",
 		"clean": "git clean -xdf .cache .output .vinxi .turbo node_modules",
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false",
 		"auth:generate": "bun with-env bunx @better-auth/cli generate",

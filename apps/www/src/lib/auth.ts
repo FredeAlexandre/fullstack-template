@@ -1,6 +1,5 @@
 import { db } from "@acme/db/client";
 import { betterAuth } from "better-auth";
-import { emailHarmony } from "better-auth-harmony";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import {
 	admin,
@@ -19,7 +18,6 @@ export const auth = betterAuth({
 	}),
 	appName: "Acme",
 	plugins: [
-		emailHarmony(),
 		multiSession(),
 		admin(),
 		twoFactor(),

@@ -5,11 +5,26 @@ import { Label } from "@acme/ui/label";
 import { Link } from "@tanstack/react-router";
 import { useId } from "react";
 
+import { useForm } from "@tanstack/react-form";
+import type { AnyFieldApi } from "@tanstack/react-form";
+
 export default function SignInPage() {
 	const id = useId();
+
+	const form = useForm({
+		defaultValues: {
+			email: "",
+			password: "",
+		},
+		onSubmit: async ({ value }) => {
+			// Do something with form data
+			console.log(value);
+		},
+	});
+
 	return (
 		<div className="flex items-center justify-center pt-50">
-			<div className="w-100 space-y-4 rounded-xl border p-6">
+			<div className="w-120 space-y-4 rounded-xl border p-6">
 				<div className="flex flex-col items-center gap-2">
 					<Logo />
 					<div className="flex flex-col gap-2 text-center sm:text-left">
@@ -53,9 +68,12 @@ export default function SignInPage() {
 								Remember me
 							</Label>
 						</div>
-						<a className="text-sm underline hover:no-underline" href="/">
+						<Link
+							to="/auth/forget-password"
+							className="text-sm underline hover:no-underline"
+						>
 							Forgot password?
-						</a>
+						</Link>
 					</div>
 					<Button type="button" className="w-full">
 						Sign in
