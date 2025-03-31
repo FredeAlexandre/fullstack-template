@@ -7,8 +7,12 @@ import {
 
 import type { QueryClient } from "@tanstack/react-query";
 
+import { DefaultCatchBoundary } from "~/components/default-catch-boundary";
+import { NotFound } from "~/components/not-found";
 // @ts-ignore
 import appCss from "~/styles/app.css?url";
+
+import { fetchUser } from "~/functions";
 
 export const Route = createRootRouteWithContext<{
 	queryClient: QueryClient;
@@ -28,6 +32,21 @@ export const Route = createRootRouteWithContext<{
 		],
 		links: [{ rel: "stylesheet", href: appCss }],
 	}),
+	errorComponent: (props) => {
+		return (
+			<RootDocument>
+				<DefaultCatchBoundary {...props} />
+			</RootDocument>
+		);
+	},
+	beforeLoad: async () => {
+		const user = await fetchUser();
+
+		return {
+			user,
+		};
+	},
+	notFoundComponent: () => <NotFound />,
 	component: RootComponent,
 });
 
