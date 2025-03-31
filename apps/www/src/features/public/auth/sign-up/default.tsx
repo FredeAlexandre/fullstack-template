@@ -1,49 +1,26 @@
-import { Button } from "@acme/ui/button";
-import { Input } from "@acme/ui/input";
-import { Label } from "@acme/ui/label";
+import { useForm } from "@tanstack/react-form";
 import { Link } from "@tanstack/react-router";
-import { useId, useState } from "react";
+import { Inbox } from "lucide-react";
+import { useState } from "react";
 
-import { cn } from "@acme/ui";
+import { Button } from "@acme/ui/button";
 import {
 	Dialog,
 	DialogContent,
-	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-	DialogTrigger,
 } from "@acme/ui/dialog";
-import { useForm } from "@tanstack/react-form";
-import type { AnyFieldApi } from "@tanstack/react-form";
+import { Input } from "@acme/ui/input";
+import { Label } from "@acme/ui/label";
 
-import { CheckCircle, Inbox } from "lucide-react";
 import { authClient } from "~/lib/auth-client";
 import { uniqueUsername } from "~/lib/unique-username";
 
+import { FieldInfo } from "~/components/field-info";
+
 import { toast } from "sonner";
 
-function FieldInfo({ field }: { field: AnyFieldApi }) {
-	let content = "Validating...";
-
-	if (field.state.meta.isTouched && field.state.meta.errors.length) {
-		content = field.state.meta.errors.join(", ");
-	}
-	return (
-		<div
-			className={cn("text-muted-foreground text-xs", {
-				invisible:
-					!field.state.meta.isValidating ||
-					(field.state.meta.isTouched && field.state.meta.errors.length),
-			})}
-		>
-			<em className="text-danger">{content}</em>
-		</div>
-	);
-}
-
 export default function SignUpPage() {
-	const id = useId();
-
 	const [isDialogOpen, setDialogOpen] = useState(false);
 	const [email, setEmail] = useState("");
 
