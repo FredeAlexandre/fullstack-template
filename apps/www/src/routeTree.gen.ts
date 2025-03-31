@@ -11,98 +11,255 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as AuthSignUpImport } from './routes/auth/sign-up'
-import { Route as AuthSignInImport } from './routes/auth/sign-in'
+import { Route as PublicRouteImport } from './routes/_public/route'
+import { Route as PublicIndexImport } from './routes/_public/index'
+import { Route as AuthedAppRouteImport } from './routes/_authed.app/route'
+import { Route as AuthedAppIndexImport } from './routes/_authed.app/index'
+import { Route as PublicAuthSignUpImport } from './routes/_public/auth/sign-up'
+import { Route as PublicAuthSignInImport } from './routes/_public/auth/sign-in'
+import { Route as PublicAuthResetPasswordImport } from './routes/_public/auth/reset-password'
+import { Route as PublicAuthForgetPasswordImport } from './routes/_public/auth/forget-password'
+import { Route as PublicAuthEmailVerifiedImport } from './routes/_public/auth/email-verified'
 
 // Create/Update Routes
 
-const IndexRoute = IndexImport.update({
+const PublicRouteRoute = PublicRouteImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PublicIndexRoute = PublicIndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+
+const AuthedAppRouteRoute = AuthedAppRouteImport.update({
+  id: '/_authed/app',
+  path: '/app',
   getParentRoute: () => rootRoute,
 } as any)
 
-const AuthSignUpRoute = AuthSignUpImport.update({
+const AuthedAppIndexRoute = AuthedAppIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthedAppRouteRoute,
+} as any)
+
+const PublicAuthSignUpRoute = PublicAuthSignUpImport.update({
   id: '/auth/sign-up',
   path: '/auth/sign-up',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => PublicRouteRoute,
 } as any)
 
-const AuthSignInRoute = AuthSignInImport.update({
+const PublicAuthSignInRoute = PublicAuthSignInImport.update({
   id: '/auth/sign-in',
   path: '/auth/sign-in',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+
+const PublicAuthResetPasswordRoute = PublicAuthResetPasswordImport.update({
+  id: '/auth/reset-password',
+  path: '/auth/reset-password',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+
+const PublicAuthForgetPasswordRoute = PublicAuthForgetPasswordImport.update({
+  id: '/auth/forget-password',
+  path: '/auth/forget-password',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+
+const PublicAuthEmailVerifiedRoute = PublicAuthEmailVerifiedImport.update({
+  id: '/auth/email-verified',
+  path: '/auth/email-verified',
+  getParentRoute: () => PublicRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/_authed/app': {
+      id: '/_authed/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AuthedAppRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof PublicIndexImport
+      parentRoute: typeof PublicRouteImport
     }
-    '/auth/sign-in': {
-      id: '/auth/sign-in'
+    '/_public/auth/email-verified': {
+      id: '/_public/auth/email-verified'
+      path: '/auth/email-verified'
+      fullPath: '/auth/email-verified'
+      preLoaderRoute: typeof PublicAuthEmailVerifiedImport
+      parentRoute: typeof PublicRouteImport
+    }
+    '/_public/auth/forget-password': {
+      id: '/_public/auth/forget-password'
+      path: '/auth/forget-password'
+      fullPath: '/auth/forget-password'
+      preLoaderRoute: typeof PublicAuthForgetPasswordImport
+      parentRoute: typeof PublicRouteImport
+    }
+    '/_public/auth/reset-password': {
+      id: '/_public/auth/reset-password'
+      path: '/auth/reset-password'
+      fullPath: '/auth/reset-password'
+      preLoaderRoute: typeof PublicAuthResetPasswordImport
+      parentRoute: typeof PublicRouteImport
+    }
+    '/_public/auth/sign-in': {
+      id: '/_public/auth/sign-in'
       path: '/auth/sign-in'
       fullPath: '/auth/sign-in'
-      preLoaderRoute: typeof AuthSignInImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof PublicAuthSignInImport
+      parentRoute: typeof PublicRouteImport
     }
-    '/auth/sign-up': {
-      id: '/auth/sign-up'
+    '/_public/auth/sign-up': {
+      id: '/_public/auth/sign-up'
       path: '/auth/sign-up'
       fullPath: '/auth/sign-up'
-      preLoaderRoute: typeof AuthSignUpImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof PublicAuthSignUpImport
+      parentRoute: typeof PublicRouteImport
+    }
+    '/_authed/app/': {
+      id: '/_authed/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AuthedAppIndexImport
+      parentRoute: typeof AuthedAppRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
+interface PublicRouteRouteChildren {
+  PublicIndexRoute: typeof PublicIndexRoute
+  PublicAuthEmailVerifiedRoute: typeof PublicAuthEmailVerifiedRoute
+  PublicAuthForgetPasswordRoute: typeof PublicAuthForgetPasswordRoute
+  PublicAuthResetPasswordRoute: typeof PublicAuthResetPasswordRoute
+  PublicAuthSignInRoute: typeof PublicAuthSignInRoute
+  PublicAuthSignUpRoute: typeof PublicAuthSignUpRoute
+}
+
+const PublicRouteRouteChildren: PublicRouteRouteChildren = {
+  PublicIndexRoute: PublicIndexRoute,
+  PublicAuthEmailVerifiedRoute: PublicAuthEmailVerifiedRoute,
+  PublicAuthForgetPasswordRoute: PublicAuthForgetPasswordRoute,
+  PublicAuthResetPasswordRoute: PublicAuthResetPasswordRoute,
+  PublicAuthSignInRoute: PublicAuthSignInRoute,
+  PublicAuthSignUpRoute: PublicAuthSignUpRoute,
+}
+
+const PublicRouteRouteWithChildren = PublicRouteRoute._addFileChildren(
+  PublicRouteRouteChildren,
+)
+
+interface AuthedAppRouteRouteChildren {
+  AuthedAppIndexRoute: typeof AuthedAppIndexRoute
+}
+
+const AuthedAppRouteRouteChildren: AuthedAppRouteRouteChildren = {
+  AuthedAppIndexRoute: AuthedAppIndexRoute,
+}
+
+const AuthedAppRouteRouteWithChildren = AuthedAppRouteRoute._addFileChildren(
+  AuthedAppRouteRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/auth/sign-in': typeof AuthSignInRoute
-  '/auth/sign-up': typeof AuthSignUpRoute
+  '': typeof PublicRouteRouteWithChildren
+  '/app': typeof AuthedAppRouteRouteWithChildren
+  '/': typeof PublicIndexRoute
+  '/auth/email-verified': typeof PublicAuthEmailVerifiedRoute
+  '/auth/forget-password': typeof PublicAuthForgetPasswordRoute
+  '/auth/reset-password': typeof PublicAuthResetPasswordRoute
+  '/auth/sign-in': typeof PublicAuthSignInRoute
+  '/auth/sign-up': typeof PublicAuthSignUpRoute
+  '/app/': typeof AuthedAppIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/auth/sign-in': typeof AuthSignInRoute
-  '/auth/sign-up': typeof AuthSignUpRoute
+  '/': typeof PublicIndexRoute
+  '/auth/email-verified': typeof PublicAuthEmailVerifiedRoute
+  '/auth/forget-password': typeof PublicAuthForgetPasswordRoute
+  '/auth/reset-password': typeof PublicAuthResetPasswordRoute
+  '/auth/sign-in': typeof PublicAuthSignInRoute
+  '/auth/sign-up': typeof PublicAuthSignUpRoute
+  '/app': typeof AuthedAppIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/auth/sign-in': typeof AuthSignInRoute
-  '/auth/sign-up': typeof AuthSignUpRoute
+  '/_public': typeof PublicRouteRouteWithChildren
+  '/_authed/app': typeof AuthedAppRouteRouteWithChildren
+  '/_public/': typeof PublicIndexRoute
+  '/_public/auth/email-verified': typeof PublicAuthEmailVerifiedRoute
+  '/_public/auth/forget-password': typeof PublicAuthForgetPasswordRoute
+  '/_public/auth/reset-password': typeof PublicAuthResetPasswordRoute
+  '/_public/auth/sign-in': typeof PublicAuthSignInRoute
+  '/_public/auth/sign-up': typeof PublicAuthSignUpRoute
+  '/_authed/app/': typeof AuthedAppIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth/sign-in' | '/auth/sign-up'
+  fullPaths:
+    | ''
+    | '/app'
+    | '/'
+    | '/auth/email-verified'
+    | '/auth/forget-password'
+    | '/auth/reset-password'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth/sign-in' | '/auth/sign-up'
-  id: '__root__' | '/' | '/auth/sign-in' | '/auth/sign-up'
+  to:
+    | '/'
+    | '/auth/email-verified'
+    | '/auth/forget-password'
+    | '/auth/reset-password'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/app'
+  id:
+    | '__root__'
+    | '/_public'
+    | '/_authed/app'
+    | '/_public/'
+    | '/_public/auth/email-verified'
+    | '/_public/auth/forget-password'
+    | '/_public/auth/reset-password'
+    | '/_public/auth/sign-in'
+    | '/_public/auth/sign-up'
+    | '/_authed/app/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AuthSignInRoute: typeof AuthSignInRoute
-  AuthSignUpRoute: typeof AuthSignUpRoute
+  PublicRouteRoute: typeof PublicRouteRouteWithChildren
+  AuthedAppRouteRoute: typeof AuthedAppRouteRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AuthSignInRoute: AuthSignInRoute,
-  AuthSignUpRoute: AuthSignUpRoute,
+  PublicRouteRoute: PublicRouteRouteWithChildren,
+  AuthedAppRouteRoute: AuthedAppRouteRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -115,19 +272,54 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
-        "/auth/sign-in",
-        "/auth/sign-up"
+        "/_public",
+        "/_authed/app"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
+    "/_public": {
+      "filePath": "_public/route.tsx",
+      "children": [
+        "/_public/",
+        "/_public/auth/email-verified",
+        "/_public/auth/forget-password",
+        "/_public/auth/reset-password",
+        "/_public/auth/sign-in",
+        "/_public/auth/sign-up"
+      ]
     },
-    "/auth/sign-in": {
-      "filePath": "auth/sign-in.tsx"
+    "/_authed/app": {
+      "filePath": "_authed.app/route.tsx",
+      "children": [
+        "/_authed/app/"
+      ]
     },
-    "/auth/sign-up": {
-      "filePath": "auth/sign-up.tsx"
+    "/_public/": {
+      "filePath": "_public/index.tsx",
+      "parent": "/_public"
+    },
+    "/_public/auth/email-verified": {
+      "filePath": "_public/auth/email-verified.tsx",
+      "parent": "/_public"
+    },
+    "/_public/auth/forget-password": {
+      "filePath": "_public/auth/forget-password.tsx",
+      "parent": "/_public"
+    },
+    "/_public/auth/reset-password": {
+      "filePath": "_public/auth/reset-password.tsx",
+      "parent": "/_public"
+    },
+    "/_public/auth/sign-in": {
+      "filePath": "_public/auth/sign-in.tsx",
+      "parent": "/_public"
+    },
+    "/_public/auth/sign-up": {
+      "filePath": "_public/auth/sign-up.tsx",
+      "parent": "/_public"
+    },
+    "/_authed/app/": {
+      "filePath": "_authed.app/index.tsx",
+      "parent": "/_authed/app"
     }
   }
 }

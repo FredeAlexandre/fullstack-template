@@ -1,6 +1,6 @@
-import { cn } from ".";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import * as React from "react";
+import { cn } from ".";
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
 
