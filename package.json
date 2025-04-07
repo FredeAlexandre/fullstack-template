@@ -1,0 +1,40 @@
+{
+	"name": "acme",
+	"private": true,
+	"workspaces": ["apps/*", "tooling/*", "packages/*"],
+	"scripts": {
+		"build": "turbo run build",
+		"clean": "git clean -xdf node_modules",
+		"clean:ws": "turbo run clean",
+		"typecheck": "turbo run typecheck",
+
+		"lint": "biome check",
+		"lint:fix": "biome check --write",
+		"lint:ws": "turbo run //#lint //#sherif //#knip",
+
+		"dev": "turbo watch dev --continue",
+
+		"db:push": "turbo -F @acme/db push",
+		"db:studio": "turbo -F @acme/db studio",
+
+		"ui:add": "turbo run ui-add",
+
+		"www:dev": "bun run -F www dev",
+
+		"sherif": "bunx sherif@latest",
+		"knip": "bun with-env knip",
+
+		"postinstall": "bun sherif",
+		"with-env": "dotenv -e .env --"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^22.13.4",
+		"dotenv-cli": "^8.0.0",
+		"knip": "^5.44.4",
+		"sherif": "^1.3.0",
+		"turbo": "^2.4.4",
+		"typescript": "^5.7.3"
+	},
+	"packageManager": "bun@1.2.2"
+}
